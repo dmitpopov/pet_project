@@ -1,0 +1,39 @@
+@font-face {
+  font-family: Roboto, sans-serif;
+}
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.auth-form {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.auth-form-label {
+  display: block;
+  margin: 10px;
+}
+
+.auth-form-label span {
+  display: inline-block;
+  width: 60px;
+}
+
+.auth-form-label input {
+  background-color: #FFA07A;
+  border: none;
+  outline: none;
+  height: 30px;
+  border-radius: 5px;
+}
+
+.auth-submit-button {
+  border: 1px solid #FFA07A;
+  border-radius: 5px;
+  outline: none;
+  background-color: #ffffff;
+  font-size: 1.5rem;
+}
+
+/*# sourceMappingURL=style.css.map */
