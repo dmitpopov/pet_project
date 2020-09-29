@@ -1,6 +1,8 @@
 @font-face
   font-family: Roboto, sans-serif
 
+$mainFontColor: #FFA07A
+
 body
   font-family: Roboto,sans-serif
 
@@ -12,20 +14,65 @@ body
   display: block
   margin: 10px
 
+
 .auth-form-label span
   display: inline-block
   width: 60px
 
 .auth-form-label input
-  background-color: #FFA07A
+  background-color: $mainFontColor
   border: none
   outline: none
   height: 30px
   border-radius: 5px
 
 .auth-submit-button
-  border: 1px solid #FFA07A
+  border: 1px solid $mainFontColor
   border-radius: 5px
   outline: none
   background-color: #ffffff
   font-size: 1.5rem
+
+a
+  display: inline-block
+  width: 150px
+  text-align: center
+  font-size: 1.5rem
+  text-decoration: none
+  color: $mainFontColor
+  border: 1px solid $mainFontColor
+  border-radius: 5px
+  margin-left: 20px
+
+.settings-button
+  width: 150px
+  font-size: 1.5rem
+  color: $mainFontColor
+  background-color: #ffffff
+  border: 1px solid $mainFontColor
+  border-radius: 5px
+  margin-left: 30px
+
+.add-idea-button
+  width: 150px
+  font-size: 1.5rem
+  color: $mainFontColor
+  background-color: #ffffff
+  border: 1px solid $mainFontColor
+  border-radius: 5px
+  margin-left: 130px
+
+.create-idea-form label
+  display: block
+  margin-bottom: 20px
+  color: $mainFontColor
+
+.create-idea-form span
+  display: inline-block
+  width: 150px
+
+.create-idea-form button
+  border: 1px solid $mainFontColor
+  background-color: #ffffff
+  color: $mainFontColor
+  border-radius: 5px

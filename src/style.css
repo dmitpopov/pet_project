@@ -36,4 +36,54 @@ body {
   font-size: 1.5rem;
 }
 
+a {
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #FFA07A;
+  border: 1px solid #FFA07A;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+.settings-button {
+  width: 150px;
+  font-size: 1.5rem;
+  color: #FFA07A;
+  background-color: #ffffff;
+  border: 1px solid #FFA07A;
+  border-radius: 5px;
+  margin-left: 30px;
+}
+
+.add-idea-button {
+  width: 150px;
+  font-size: 1.5rem;
+  color: #FFA07A;
+  background-color: #ffffff;
+  border: 1px solid #FFA07A;
+  border-radius: 5px;
+  margin-left: 130px;
+}
+
+.create-idea-form label {
+  display: block;
+  margin-bottom: 20px;
+  color: #FFA07A;
+}
+
+.create-idea-form span {
+  display: inline-block;
+  width: 150px;
+}
+
+.create-idea-form button {
+  border: 1px solid #FFA07A;
+  background-color: #ffffff;
+  color: #FFA07A;
+  border-radius: 5px;
+}
+
 /*# sourceMappingURL=style.css.map */
