@@ -5,6 +5,16 @@ body {
   font-family: Roboto, sans-serif;
 }
 
+.main_header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.main_header a {
+  display: inline-block;
+  width: 200px;
+}
+
 .auth-form {
   margin: 0 auto;
   text-align: center;
@@ -18,10 +28,15 @@ body {
 .auth-form-label span {
   display: inline-block;
   width: 60px;
+  color: #FFA07A;
+  margin-right: 40px;
+  font-size: 1.5rem;
 }
 
 .auth-form-label input {
   background-color: #FFA07A;
+  padding: 10px;
+  font-size: 1.5rem;
   border: none;
   outline: none;
   height: 30px;
@@ -34,6 +49,7 @@ body {
   outline: none;
   background-color: #ffffff;
   font-size: 1.5rem;
+  color: #FFA07A;
 }
 
 a {

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import MoveBackButton from "../components/MoveBackButton";
+import Header from "../components/header";
 
 class IdeaPage extends Component {
     state = {
@@ -12,6 +13,7 @@ class IdeaPage extends Component {
 
         return (
             <div>
+                <Header />
                 <h3>{name}</h3>
                 <p>{date}</p>
                 <p>{description}</p>

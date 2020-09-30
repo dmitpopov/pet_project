@@ -1,5 +1,12 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
+import AddIdeaButton from "../components/AddIdeaButton";
+import SettingsButton from "../components/SettingsButton";
+import Header from "../components/header";
+
+
+
+
 class MainPage extends Component {
     state = {
         ideas: [
@@ -10,15 +17,36 @@ class MainPage extends Component {
     }
 
     ideaCounter = 0;
+
+    moveToCreateIdeaPage = () => {
+        this.props.history.push('/create');
+    }
+
+
     render() {
         const ideas = this.state.ideas;
-        return ideas.map((item, i) => {
-            return <Link to={"/idea"} key={i}>
-                        {item.name}
-                    </Link>
-        })
-        ;
+        return (
+            <div>
+                <Header />
+                {ideas.map((item, i) => {
+                  return <Link to='/idea' key={i}>
+                            {item.name}
+                        </Link>
+                })
+
+                }
+                <AddIdeaButton moveToCreateIdeaPage={this.moveToCreateIdeaPage}/>
+                <SettingsButton />
+            </div>
+
+        )
     }
 }
 
 export default MainPage;
+
+// {ideas.map((item, i) => {
+//     return <Link to={"/idea"} key={i}>
+//         {item.name}
+//     </Link>
+// })}

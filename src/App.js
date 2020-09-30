@@ -4,8 +4,6 @@ import AuthorisationPage from "./pages/AuthorisationPage";
 import { Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import IdeaPage from "./pages/IdeaPage";
-import AddIdeaButton from "./components/AddIdeaButton";
-import SettingsButton from "./components/SettingsButton";
 import CreateIdeaPage from "./pages/CreateIdeaPage";
 
 
@@ -17,8 +15,6 @@ class App extends Component {
           <Route path="/main" exact component={MainPage} />
           <Route path="/idea" component={IdeaPage} />
           <Route path="/create" component={CreateIdeaPage} />
-          <AddIdeaButton />
-          <SettingsButton />
         </div>
     );
   }

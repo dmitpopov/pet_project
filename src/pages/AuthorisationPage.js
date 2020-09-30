@@ -1,7 +1,8 @@
 import React, {Component} from "react";
 
-class AuthorisationPage extends Component {
 
+
+class AuthorisationPage extends Component {
     state = {
         login: 'test',
         pass: '1234',
@@ -34,14 +35,14 @@ class AuthorisationPage extends Component {
     render() {
         return (
             <div className="auth-form">
-                <form action="" >
+                <form action="" onSubmit={this.loginPathHandler}>
                     <label htmlFor="" className="auth-form-label"><span> Логин</span>
                         <input type="text" onChange={this.logTrueHandler}/>
                     </label>
                     <label htmlFor="" className="auth-form-label"> <span>Пароль</span>
                         <input type="password" onChange={this.logPassHandler}/>
                     </label>
-                    <button type="submit" className="auth-submit-button" onClick={this.loginPathHandler}>Войти</button>
+                    <button type="submit" className="auth-submit-button" >Войти</button>
                 </form>
             </div>
         );
