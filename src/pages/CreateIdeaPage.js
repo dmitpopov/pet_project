@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import Header from "../components/header";
+import {Link} from "react-router-dom";
+
 
 class CreateIdeaPage extends Component {
 
     state = {
+            id: '',
             name: '',
             date: '',
             description: '',
-            favorite: false
+            favorite: false,
+            isDisabled: false
     }
-
 
     inputHeadHandler = (event) => {
         const head = event.target.value;
@@ -19,7 +22,7 @@ class CreateIdeaPage extends Component {
     }
 
     dateHandler = () => {
-        this.setState({date: new Date()})
+        this.setState({date: new Date().toLocaleDateString()});
     }
 
     inputDescriptionHandler = (event) => {
@@ -28,14 +31,31 @@ class CreateIdeaPage extends Component {
     }
 
     inputFavoriteHandler = (event) => {
-        const favorite = event.target.value;
+        console.log(event.target.value);
+        const favorite = event.target;
         this.setState({favorite: favorite});
     }
 
+    // returnToMainPageAfterCreation = () => {
+    //     return <Redirect to="/main" />;
+    // }
 
+    recordNewIdea = () => {
+        fetch('http://localhost:3030/create', {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(this.state)
+        })
+            .then(res => res.text())
+            .then(data => console.log(data))
+    }
 
-    saveIdeaHandler = () => {
-
+    saveIdeaHandler = (event) => {
+        event.preventDefault();
+        this.recordNewIdea();
+        this.setState({isDisabled: true});
     }
 
     render() {
@@ -44,18 +64,19 @@ class CreateIdeaPage extends Component {
                 <Header />
                 <form className="create-idea-form" onSubmit={this.saveIdeaHandler}>
                     <label htmlFor=""><span>Заголовок</span>
-                        <input type="text" onChange={this.inputHeadHandler}/>
+                        <input type="text" required disabled={this.state.isDisabled} onChange={this.inputHeadHandler}/>
                     </label>
                     <label htmlFor=""><span>Описание</span>
-                        <textarea onChange={this.inputDescriptionHandler}>
+                        <textarea required disabled={this.state.isDisabled} onChange={this.inputDescriptionHandler}>
                         </textarea>
                     </label>
                     <label><span>Избранное</span>
                         <input type="checkbox" onChange={this.inputFavoriteHandler}/>
                     </label>
-                    <button type="submit">Сохранить</button>
-
+                    <button type="submit" style={this.state.isDisabled ? {display: "none"} : {display: "block"}}>Сохранить</button>
                 </form>
+                <Link to="/main" >Назад</Link>
+
                 {console.log(this.state)}
             </div>
         );
@@ -63,3 +84,4 @@ class CreateIdeaPage extends Component {
 }
 
 export default CreateIdeaPage;
+

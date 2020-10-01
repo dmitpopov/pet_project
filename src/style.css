@@ -54,7 +54,7 @@ body {
 
 a {
   display: inline-block;
-  width: 150px;
+  padding: 10px;
   text-align: center;
   font-size: 1.5rem;
   text-decoration: none;

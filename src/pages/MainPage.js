@@ -9,14 +9,18 @@ import Header from "../components/header";
 
 class MainPage extends Component {
     state = {
-        ideas: [
-            {name: 'test15', date: '26.09.2020', description: 'This is idea test1', favorite: false},
-            {name: 'test2', date: '27.09.2020', description: 'This is idea test2', favorite: true},
-            {name: 'test3', date: '28.09.2020', description: 'This is idea test3', favorite: false}
-        ]
+        ideas: []
     }
 
-    ideaCounter = 0;
+    componentDidMount() {
+        console.log('comp');
+        fetch('http://localhost:3030/main')
+            .then(response => response.json())
+            .then(data => {
+                this.setState({ideas: data})
+
+            })
+    }
 
     moveToCreateIdeaPage = () => {
         this.props.history.push('/create');
@@ -29,8 +33,10 @@ class MainPage extends Component {
             <div>
                 <Header />
                 {ideas.map((item, i) => {
-                  return <Link to='/idea' key={i}>
-                            {item.name}
+                  return <Link to={'/idea/' + item.id} key={i}>
+                        {console.log(item.id)}
+                          <p>{item.name}</p>
+                          <p>{' ' + item.date}</p>
                         </Link>
                 })
 
@@ -50,3 +56,7 @@ export default MainPage;
 //         {item.name}
 //     </Link>
 // })}
+
+// {name: 'test15', date: '26.09.2020', description: 'This is idea test1', favorite: false},
+// {name: 'test2', date: '27.09.2020', description: 'This is idea test2', favorite: true},
+// {name: 'test3', date: '28.09.2020', description: 'This is idea test3', favorite: false}

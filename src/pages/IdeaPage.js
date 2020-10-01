@@ -1,15 +1,31 @@
 import React, {Component} from "react";
-import MoveBackButton from "../components/MoveBackButton";
+// import MoveBackButton from "../components/MoveBackButton";
 import Header from "../components/header";
+import {Link} from "react-router-dom";
+
 
 class IdeaPage extends Component {
     state = {
-        ideas: [
-            {name: 'test555', date: '29.09.2020', description: 'test555 idea text', favorite: true}
-        ]
+        idea: []
     }
+
+
+
+    componentDidMount() {
+        const id = this.props.match.params.id - 1;
+        console.log(id);
+        fetch('http://localhost:3030/idea/' + id)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({idea: data})
+            })
+    }
+
+
+
     render() {
-        const {name, date, description, favorite} = this.state.ideas[0];
+        const {name, date, description, favorite} = this.state.idea;
 
         return (
             <div>
@@ -20,7 +36,7 @@ class IdeaPage extends Component {
                 <label>Избранное
                     <input type="checkbox" defaultChecked={favorite} />
                 </label>
-                <MoveBackButton />
+                <Link to="/main" >Назад</Link>
             </div>
         );
     }
