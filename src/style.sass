@@ -1,19 +1,39 @@
 @font-face
   font-family: Roboto, sans-serif
 
-$mainFontColor: #FFA07A
+$mainFontColor: #B51D0A
+$mainBGColor: #EAD39C
+$buttonBGColor: #EAD39C
+
+.create-form
+  padding: 30px 0 30px
+
+//#7D5E3C
 
 body
   font-family: Roboto,sans-serif
+  background-color: $mainBGColor
 
 .main_header
   text-align: center
-  margin-bottom: 100px
+  //margin-bottom: 30px
+  display: flex
+  justify-content: space-around
+  align-items: center
+  color: $mainFontColor
+  border-bottom: 5px dotted $mainFontColor
+  background-color: $mainBGColor
+  padding: 30px 0 30px
+  margin-top: 20px
 
 .main_header a
   display: inline-block
-  width: 200px
+  background-color: $buttonBGColor
+  //width: 200px
 
+.idea-item
+  display: block
+  margin: 30px
 
 .auth-form
   margin: 0 auto
@@ -32,19 +52,19 @@ body
   font-size: 1.5rem
 
 .auth-form-label input
-  background-color: $mainFontColor
+  background-color: $buttonBGColor
   padding: 10px
   font-size: 1.5rem
-  border: none
+  border: 1px solid $mainFontColor
   outline: none
   height: 30px
-  border-radius: 5px
+  border-radius: 10px
 
 .auth-submit-button
   border: 1px solid $mainFontColor
-  border-radius: 5px
+  border-radius: 10px
   outline: none
-  background-color: #ffffff
+  background-color: $buttonBGColor
   font-size: 1.5rem
   color: $mainFontColor
 
@@ -57,17 +77,17 @@ a
   text-decoration: none
   color: $mainFontColor
   border: 1px solid $mainFontColor
-  border-radius: 5px
+  border-radius: 10px
   margin-left: 20px
 
 .settings-button
   width: 150px
   font-size: 1.5rem
   color: $mainFontColor
-  background-color: #ffffff
+  background-color: $buttonBGColor
   border: 1px solid $mainFontColor
-  border-radius: 5px
-  margin-left: 30px
+  border-radius: 10px
+  //margin-left: 30px
 
 .add-idea-button
   width: 150px
@@ -75,8 +95,11 @@ a
   color: $mainFontColor
   background-color: #ffffff
   border: 1px solid $mainFontColor
-  border-radius: 5px
+  border-radius: 10px
   margin-left: 130px
+
+.create-form
+  padding: 30px 0 30px
 
 .create-idea-form label
   display: block
@@ -88,7 +111,60 @@ a
   width: 150px
 
 .create-idea-form button
-  border: 1px solid $mainFontColor
-  background-color: #ffffff
+  padding: 10px
+  text-align: center
+  font-size: 1.5rem
+  text-decoration: none
   color: $mainFontColor
-  border-radius: 5px
+  border: 1px solid $mainFontColor
+  background-color: $buttonBGColor
+  border-radius: 10px
+  margin-left: 20px
+
+.delete-idea-button
+  padding: 10px
+  text-align: center
+  font-size: 1.5rem
+  text-decoration: none
+  color: $mainFontColor
+  border: 1px solid $mainFontColor
+  background-color: $buttonBGColor
+  border-radius: 10px
+  margin: 10px
+
+//Delete idea block
+
+.idea-box
+  margin: 30px
+  position: relative
+
+.prove-delete-idea
+  width: 80%
+  position: absolute
+  left: 10%
+  top: 20%
+  background-color: $mainFontColor
+  border-radius: 10px
+  padding: 10px
+
+@media screen and (min-width: 761px)
+
+  body
+    background-color: #500805
+    padding: 0 calc(50% - 450px)
+    margin: 0
+
+
+
+  main
+    background-color: $mainBGColor
+    padding: 30px 0 30px
+    width: 900px
+
+  .main_header
+    width: 900px
+
+//@media screen and (min-width: 900px)
+//
+//  body
+//    background-color: white

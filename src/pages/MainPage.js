@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-import AddIdeaButton from "../components/AddIdeaButton";
-import SettingsButton from "../components/SettingsButton";
+// import AddIdeaButton from "../components/AddIdeaButton";
+// import SettingsButton from "../components/SettingsButton";
 import Header from "../components/header";
 
 
@@ -13,18 +13,20 @@ class MainPage extends Component {
     }
 
     componentDidMount() {
-        console.log('comp');
+        // console.log('comp');
         fetch('http://localhost:3030/main')
             .then(response => response.json())
             .then(data => {
                 this.setState({ideas: data})
-
+            })
+            .catch(err => {
+                console.log(err);
             })
     }
 
-    moveToCreateIdeaPage = () => {
-        this.props.history.push('/create');
-    }
+    // moveToCreateIdeaPage = () => {
+    //     this.props.history.push('/create');
+    // }
 
 
     render() {
@@ -32,17 +34,17 @@ class MainPage extends Component {
         return (
             <div>
                 <Header />
-                {ideas.map((item, i) => {
-                  return <Link to={'/idea/' + item.id} key={i}>
-                        {console.log(item.id)}
-                          <p>{item.name}</p>
-                          <p>{' ' + item.date}</p>
-                        </Link>
-                })
-
-                }
-                <AddIdeaButton moveToCreateIdeaPage={this.moveToCreateIdeaPage}/>
-                <SettingsButton />
+                <main className="main">
+                    {ideas.map((item) => {
+                      return    <Link to={'/idea/' + item.id} className="idea-item" key={item.id} >
+                                    <p>{item.name}</p>
+                                    <p>{' ' + item.date}</p>
+                                </Link>
+                        })
+                    }
+                </main>
+                {/*<AddIdeaButton moveToCreateIdeaPage={this.moveToCreateIdeaPage}/>*/}
+                {/*<SettingsButton />*/}
             </div>
 
         )

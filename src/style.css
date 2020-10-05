@@ -1,18 +1,35 @@
 @font-face {
   font-family: Roboto, sans-serif;
 }
+.create-form {
+  padding: 30px 0 30px;
+}
+
 body {
   font-family: Roboto, sans-serif;
+  background-color: #EAD39C;
 }
 
 .main_header {
   text-align: center;
-  margin-bottom: 100px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: #B51D0A;
+  border-bottom: 5px dotted #B51D0A;
+  background-color: #EAD39C;
+  padding: 30px 0 30px;
+  margin-top: 20px;
 }
 
 .main_header a {
   display: inline-block;
-  width: 200px;
+  background-color: #EAD39C;
+}
+
+.idea-item {
+  display: block;
+  margin: 30px;
 }
 
 .auth-form {
@@ -28,28 +45,28 @@ body {
 .auth-form-label span {
   display: inline-block;
   width: 60px;
-  color: #FFA07A;
+  color: #B51D0A;
   margin-right: 40px;
   font-size: 1.5rem;
 }
 
 .auth-form-label input {
-  background-color: #FFA07A;
+  background-color: #EAD39C;
   padding: 10px;
   font-size: 1.5rem;
-  border: none;
+  border: 1px solid #B51D0A;
   outline: none;
   height: 30px;
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 .auth-submit-button {
-  border: 1px solid #FFA07A;
-  border-radius: 5px;
+  border: 1px solid #B51D0A;
+  border-radius: 10px;
   outline: none;
-  background-color: #ffffff;
+  background-color: #EAD39C;
   font-size: 1.5rem;
-  color: #FFA07A;
+  color: #B51D0A;
 }
 
 a {
@@ -58,36 +75,39 @@ a {
   text-align: center;
   font-size: 1.5rem;
   text-decoration: none;
-  color: #FFA07A;
-  border: 1px solid #FFA07A;
-  border-radius: 5px;
+  color: #B51D0A;
+  border: 1px solid #B51D0A;
+  border-radius: 10px;
   margin-left: 20px;
 }
 
 .settings-button {
   width: 150px;
   font-size: 1.5rem;
-  color: #FFA07A;
-  background-color: #ffffff;
-  border: 1px solid #FFA07A;
-  border-radius: 5px;
-  margin-left: 30px;
+  color: #B51D0A;
+  background-color: #EAD39C;
+  border: 1px solid #B51D0A;
+  border-radius: 10px;
 }
 
 .add-idea-button {
   width: 150px;
   font-size: 1.5rem;
-  color: #FFA07A;
+  color: #B51D0A;
   background-color: #ffffff;
-  border: 1px solid #FFA07A;
-  border-radius: 5px;
+  border: 1px solid #B51D0A;
+  border-radius: 10px;
   margin-left: 130px;
+}
+
+.create-form {
+  padding: 30px 0 30px;
 }
 
 .create-idea-form label {
   display: block;
   margin-bottom: 20px;
-  color: #FFA07A;
+  color: #B51D0A;
 }
 
 .create-idea-form span {
@@ -96,10 +116,60 @@ a {
 }
 
 .create-idea-form button {
-  border: 1px solid #FFA07A;
-  background-color: #ffffff;
-  color: #FFA07A;
-  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #B51D0A;
+  border: 1px solid #B51D0A;
+  background-color: #EAD39C;
+  border-radius: 10px;
+  margin-left: 20px;
+}
+
+.delete-idea-button {
+  padding: 10px;
+  text-align: center;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #B51D0A;
+  border: 1px solid #B51D0A;
+  background-color: #EAD39C;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.idea-box {
+  margin: 30px;
+  position: relative;
+}
+
+.prove-delete-idea {
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  background-color: #B51D0A;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+@media screen and (min-width: 761px) {
+  body {
+    background-color: #500805;
+    padding: 0 calc(50% - 450px);
+    margin: 0;
+  }
+
+  main {
+    background-color: #EAD39C;
+    padding: 30px 0 30px;
+    width: 900px;
+  }
+
+  .main_header {
+    width: 900px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
