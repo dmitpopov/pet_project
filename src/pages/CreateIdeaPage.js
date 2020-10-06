@@ -6,32 +6,33 @@ import {Link} from "react-router-dom";
 class CreateIdeaPage extends Component {
 
     state = {
-            id: '',
-            name: '',
+            user_id: '',
+            idea_head: '',
             date: '',
-            description: '',
-            favorite: false,
+            idea_text: '',
+            favourite: false,
             isDisabled: false
     }
 
     inputHeadHandler = (event) => {
         const head = event.target.value;
-        this.setState({name: head});
+        this.setState({idea_head: head, user_id: localStorage.getItem('user_id')});
         this.dateHandler();
     }
 
     dateHandler = () => {
         this.setState({date: new Date().toLocaleDateString()});
+        console.log(new Date().toLocaleDateString());
     }
 
     inputDescriptionHandler = (event) => {
         const descr = event.target.value;
-        this.setState({description: descr});
+        this.setState({idea_text: descr});
     }
 
     inputFavoriteHandler = (event) => {
-        const favorite = event.target.checked;
-        this.setState({favorite: favorite});
+        const favourite = event.target.checked;
+        this.setState({favourite: favourite});
     }
 
     recordNewIdea = () => {

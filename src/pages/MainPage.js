@@ -13,21 +13,20 @@ class MainPage extends Component {
     }
 
     componentDidMount() {
-        // console.log('comp');
-        fetch('http://localhost:3030/main')
+        const id = localStorage.getItem('user_id');
+        fetch('http://localhost:3030/main/' + id)
             .then(response => response.json())
             .then(data => {
-                this.setState({ideas: data})
+                const newIdeas = [];
+                data.map(item => {
+                    return newIdeas.push(item);
+                })
+                this.setState({ideas: newIdeas});
             })
             .catch(err => {
                 console.log(err);
             })
     }
-
-    // moveToCreateIdeaPage = () => {
-    //     this.props.history.push('/create');
-    // }
-
 
     render() {
         const ideas = this.state.ideas;
@@ -37,14 +36,12 @@ class MainPage extends Component {
                 <main className="main">
                     {ideas.map((item) => {
                       return    <Link to={'/idea/' + item.id} className="idea-item" key={item.id} >
-                                    <p>{item.name}</p>
+                                    <p>{item.idea_head}</p>
                                     <p>{' ' + item.date}</p>
                                 </Link>
                         })
                     }
                 </main>
-                {/*<AddIdeaButton moveToCreateIdeaPage={this.moveToCreateIdeaPage}/>*/}
-                {/*<SettingsButton />*/}
             </div>
 
         )

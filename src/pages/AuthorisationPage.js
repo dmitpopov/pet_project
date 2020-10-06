@@ -38,10 +38,11 @@ class AuthorisationPage extends Component {
                 if(data.length === 0) {
                     alert('Введите повторно логин и пароль');
                 } else {
-                    const {name, pass} = data[0];
+                    const {id, name, pass} = data[0];
                     console.log(name, pass, this.state.login);
                     if (name === this.state.login && pass === this.state.pass) {
                         this.setState({log_true: true, pass_true: true});
+                        localStorage.setItem('user_id', id);
                         this.props.history.push('/main');
                     }
                 }

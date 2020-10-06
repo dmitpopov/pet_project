@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mysql = require('mysql');
+const nodemailer = require('nodemailer');
+const cron = require('node-cron');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
@@ -14,25 +16,68 @@ const connection = mysql.createConnection({
     database: 'ideas'
 })
 
-
-let ideasStorage = [
-    {id: 1, name: 'test1', date: '30.09.2020', description: 'test1 text', favorite: false},
-    {id: 2, name: 'test2', date: '30.09.2020', description: 'test2 text', favorite: true},
-    {id: 3, name: 'test3', date: '30.09.2020', description: 'test3 text', favorite: true}
-];
-
-let idCounter = 3;
-
 let loginQuery = `SELECT * FROM users WHERE name = `;
 let ideaQuery = `SELECT * FROM ideas WHERE id = `;
-let allIdeasList = `SELECT * FROM ideas WHERE id = `;
+let allIdeasListQuery = `SELECT * FROM ideas WHERE user_id = `;
+let createIdeaQuery = `INSERT INTO ideas (user_id, idea_head, idea_text, date, favourite) VALUES (`;
+let deleteIdeaQuery = `DELETE FROM ideas WHERE id = `;
+let ideasForMessageQuery = `SELECT * FROM ideas WHERE TO_DAYS(NOW()) - TO_DAYS(date) <= 7;`;
+
+
+let transporter = nodemailer.createTransport({
+    host: "smtp.yandex.ru",
+    port: 465,
+    secure: true,
+    auth: {
+        user: 'bootmailer',
+        pass: '20bootM20'
+    }
+})
+
+const getMessagesToRemind = () => {
+    connection.query(ideasForMessageQuery, (err, data) => {
+        if(!err) {
+            // console.log(data);
+            createEmail(data);
+        } else {
+            console.log(err);
+        }
+    });
+}
+
+const createEmail = (data) => {
+    let newData = data;
+    let ideasForReminder = '<h1><i>Список идей за прошедшую неделю</i></h1>';
+    if(newData.length === 0) {
+        ideasForReminder += 'Пока ничего нового';
+    } else {
+        newData.map((item) => {
+            ideasForReminder += `<div>
+                                <h2>${item.idea_head}</h2>
+                                <a href="http://localhost:3000/idea/${item.id}">${item.idea_text}</a>
+                            </div>`
+            return ideasForReminder;
+        })
+    }
+    // console.log(ideasForReminder);
+    transporter.sendMail({
+        from: 'bootmailer@yandex.ru',
+        to: 'dmpprog@gmail.com',
+        subject: 'Ideas reminder',
+        html: ideasForReminder
+    })
+}
+
+cron.schedule('*/1 * * * *', () => {
+    getMessagesToRemind();
+});
+
 
 app.post('/', (req, res) => {
     const name = '"' + req.body.login + '"';
     console.log(typeof name);
     connection.query(loginQuery + name + ';', (err, data) => {
         if (!err) {
-            console.log(data);
             res.send(data);
         } else {
             console.log(err);
@@ -40,12 +85,18 @@ app.post('/', (req, res) => {
         }
     })
 
-
-    // res.send({'answer': 'OK'});
 })
 
-app.get('/main', (req, res) => {
-    res.json(ideasStorage);
+app.get('/main/:id', (req, res) => {
+    const id = +req.params.id;
+    console.log(id);
+    connection.query(allIdeasListQuery + id + ';', (err, data) => {
+        if(!err) {
+            res.send(data);
+        } else {
+            res.send(err);
+        }
+    })
 })
 
 app.get('/idea/:id', (req, res) => {
@@ -53,35 +104,38 @@ app.get('/idea/:id', (req, res) => {
     connection.query(ideaQuery+id+';', (err, data) => {
         // console.log((ideaQuery + id + ';'));
         if(!err) {
-            console.log(data);
             res.json(data);
         } else {
             res.json(err);
         }
     })
-    // const idea = ideasStorage.find((item) => {
-    //     return item.id === id;
-    // })
-    // res.json(idea);
 })
 
 app.delete('/idea/:id', (req, res) => {
     const id = +req.params.id;
-    ideasStorage = ideasStorage.filter((item) => {
-        return item.id !== id;
-    });
-    res.status(201).send(ideasStorage);
+    console.log(`${deleteIdeaQuery} ${id};`);
+    connection.query(`${deleteIdeaQuery} ${id};`, (err, data) => {
+        if(!err) {
+            res.status(200).send(data);
+        } else {
+            res.send(err);
+        }
+    })
 })
 
 
 app.post('/create', (req, res) => {
-    idCounter++;
-    let newIdea = {...req.body, id: idCounter};
-    ideasStorage.push(newIdea);
-    res.status(201).send('Запись успешно добавлена в базу данных');
+    let newIdea = {...req.body};
+    const {user_id, idea_head, idea_text, date, favourite} = req.body;
+    console.log(date);
+    connection.query(`${createIdeaQuery} "${user_id}" , "${idea_head}", "${idea_text}", CURRENT_DATE(), ${favourite});`, (err, data) => {
+        if(!err) {
+            res.status(201).send(data);
+        } else {
+            res.send(err);
+        }
+    })
 })
-
-
 
 app.listen(3030, () => {
     console.log('server runs at port 3030');
