@@ -16,15 +16,24 @@ class IdeaPage extends Component {
     deleteIdea = () => {
         const id = this.props.match.params.id;
         fetch('http://localhost:3030/idea/' + id, {
-            method: 'DELETE'
+            method: 'DELETE',
+            headers: {
+                token: localStorage.getItem('token')
+            },
         })
-            .then(res => res.text())
-            .then(data => {
-                console.log('Delete successful')
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        .then(response => {
+            if (response.status === 401) {
+                this.props.history.push('/login');
+            } else {
+                return response.text();
+            }
+        })
+        .then(() => {
+            this.props.history.push('/');
+        })
+        .catch(err => {
+            console.log(err);
+        })
         this.proveDelete();
     }
 
@@ -33,14 +42,19 @@ class IdeaPage extends Component {
     componentDidMount() {
         const id = this.props.match.params.id;
         fetch('http://localhost:3030/idea/' + id, { headers: { token: localStorage.getItem('token') } })
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data);
-                this.setState({idea: data})
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        .then(response => {
+            if (response.status === 401) {
+                this.props.history.push('/login');
+            } else {
+                return response.json();
+            }
+        })
+        .then(data => {
+            this.setState({idea: data})
+        })
+        .catch(err => {
+            console.log(err);
+        })
     }
 
 

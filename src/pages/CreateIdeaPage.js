@@ -36,7 +36,7 @@ class CreateIdeaPage extends Component {
     }
 
     recordNewIdea = () => {
-        fetch('http://localhost:3030/create', {
+        fetch('http://localhost:3030/idea', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -44,8 +44,23 @@ class CreateIdeaPage extends Component {
             },
             body: JSON.stringify(this.state)
         })
-            .then(res => res.text())
-            .then(data => console.log(data))
+        .then(response => {
+            if (response.status === 401) {
+                this.props.history.push('/login');
+            } else {
+                return response.text();
+            }
+        })
+        .then(() => {
+            this.props.history.push('/');
+        })
+        .catch((err) => {
+            if (err.status === 401) {
+                this.props.history.push('/login');
+            } else {
+                console.log(err);
+            }
+        });
     }
 
     saveIdeaHandler = (event) => {

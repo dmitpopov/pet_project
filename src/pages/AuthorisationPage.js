@@ -23,18 +23,19 @@ class AuthorisationPage extends Component {
             },
             body: JSON.stringify({ login: this.state.login, pass: this.state.pass})
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.length === 0) {
-                    alert('Введите повторно логин и пароль');
-                } else {
-                    const { token } = data;
-                    localStorage.setItem('token', token);
-                    this.props.history.push('/');
-                }
-            }).catch(err => {
-                console.log(err);
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.length === 0) {
+                alert('Введите повторно логин и пароль');
+            } else {
+                const { token } = data;
+                localStorage.setItem('token', token);
+                this.props.history.push('/');
+            }
+        })
+        .catch(err => {
+            console.log(err);
         });
     }
 
