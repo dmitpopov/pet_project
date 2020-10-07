@@ -4,6 +4,8 @@ const cors = require('cors');
 const mysql = require('mysql');
 const nodemailer = require('nodemailer');
 const cron = require('node-cron');
+const bcrypt = require('bcrypt');
+const randtoken = require('rand-token');
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(cors());
@@ -23,7 +25,7 @@ let allIdeasListQuery = `SELECT * FROM ideas WHERE user_id = `;
 let createIdeaQuery = `INSERT INTO ideas (user_id, idea_head, idea_text, date, favourite) VALUES (`;
 let deleteIdeaQuery = `DELETE FROM ideas WHERE id = `;
 let ideasForMessageQuery = `SELECT * FROM ideas WHERE TO_DAYS(NOW()) - TO_DAYS(date) <= 7;`;
-
+let registrationQuery = `INSERT INTO users (name, surname, login, hashedpass, email, salt, token) VALUES (`;
 
 let transporter = nodemailer.createTransport({
     host: "smtp.yandex.ru",
@@ -71,10 +73,29 @@ const createEmail = (data) => {
 //     getMessagesToRemind();
 // });
 
+app.post('/reg', (req, res) => {
+
+    const {name, surname, login, pass, email} = req.body;
+
+    const salt = bcrypt.genSaltSync(20);
+    const hashedPass = bcrypt.hashSync(pass, salt);
+    const token = randtoken.generate(30);
+
+    console.log(`${registrationQuery}${name}, ${surname}, ${login}, ${hashedPass}, ${email}, ${salt}, ${token});`);
+
+    connection.query(`${registrationQuery}${name}, ${surname}, ${login}, ${hashedPass}, ${email}, ${salt}, ${token});`, (err, data) => {
+        if(!err){
+            res.status(200).send(token);
+        } else {
+            res.status(400).send();
+        }
+    })
+})
+
 
 app.post('/', (req, res) => {
     const name = '"' + req.body.login + '"';
-    console.log(typeof name);
+    console.log(name);
     connection.query(loginQuery + name + ';', (err, data) => {
         if (!err) {
             res.send(data);

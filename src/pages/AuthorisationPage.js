@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import {Link} from "react-router-dom";
 
 
 class AuthorisationPage extends Component {
@@ -13,24 +13,15 @@ class AuthorisationPage extends Component {
     loginPathHandler = (event) => {
         event.preventDefault();
         this.fetchLogin();
-        // if ()
-        // console.log(this.state.log_true);
-
-        // if(this.state.log_true && this.state.pass_true) {
-        //     this.props.history.push('/main');
-        // } else {
-        //     alert('Repeat login & pass enter');
-        // }
     }
 
     fetchLogin = () => {
         fetch('http://localhost:3030', {
             method: 'POST',
-            // mode: 'no-cors',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({login: this.state})
+            body: JSON.stringify({login: this.state.login})
         })
             .then(res => res.json())
             .then(data => {
@@ -38,9 +29,10 @@ class AuthorisationPage extends Component {
                 if(data.length === 0) {
                     alert('Введите повторно логин и пароль');
                 } else {
-                    const {id, name, pass} = data[0];
-                    console.log(name, pass, this.state.login);
-                    if (name === this.state.login && pass === this.state.pass) {
+                    console.log(data);
+                    const {id, name, password} = data[0];
+                    console.log(name, password, this.state.login);
+                    if (name === this.state.login && password === this.state.pass) {
                         this.setState({log_true: true, pass_true: true});
                         localStorage.setItem('user_id', id);
                         this.props.history.push('/main');
@@ -52,11 +44,15 @@ class AuthorisationPage extends Component {
     }
 
     logTrueHandler = (event) => {
-        this.setState({login: event.target.value});
+        this.setState({login: event.target.value}, () => {
+
+        });
     }
 
     logPassHandler = (event) => {
-        this.setState({pass: event.target.value});
+        this.setState({pass: event.target.value}, () => {
+            console.log(this.state.pass);
+        });
     }
 
 
@@ -73,6 +69,12 @@ class AuthorisationPage extends Component {
                         <input type="password" onChange={this.logPassHandler}/>
                     </label>
                     <button type="submit" className="auth-submit-button" >Войти</button>
+                    <div>
+                        <p>Нет учетной записи?</p>
+                        <Link to={'/reg'}>
+                            Регистрация
+                        </Link>
+                    </div>
                 </form>
             </div>
         );
