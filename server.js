@@ -14,18 +14,19 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    password: '901#Dm?2020&',
+    // password: '901#Dm?2020&',
+    password: 'abcd1234',
     database: 'ideas'
 })
 
 
-let loginQuery = `SELECT * FROM users WHERE name = `;
+let loginQuery = `SELECT * FROM users WHERE login = `;
 let ideaQuery = `SELECT * FROM ideas WHERE id = `;
 let allIdeasListQuery = `SELECT * FROM ideas WHERE user_id = `;
 let createIdeaQuery = `INSERT INTO ideas (user_id, idea_head, idea_text, date, favourite) VALUES (`;
 let deleteIdeaQuery = `DELETE FROM ideas WHERE id = `;
 let ideasForMessageQuery = `SELECT * FROM ideas WHERE TO_DAYS(NOW()) - TO_DAYS(date) <= 7;`;
-let registrationQuery = `INSERT INTO users (name, surname, login, hashedpass, email, salt, token) VALUES (`;
+let registrationQuery = `INSERT INTO users (name, surname, login, hashedpass, email, salt) VALUES (`;
 
 let transporter = nodemailer.createTransport({
     host: "smtp.yandex.ru",
@@ -77,15 +78,12 @@ app.post('/reg', (req, res) => {
 
     const {name, surname, login, pass, email} = req.body;
 
-    const salt = bcrypt.genSaltSync(20);
+    const salt = bcrypt.genSaltSync(5);
     const hashedPass = bcrypt.hashSync(pass, salt);
-    const token = randtoken.generate(30);
 
-    console.log(`${registrationQuery}${name}, ${surname}, ${login}, ${hashedPass}, ${email}, ${salt}, ${token});`);
-
-    connection.query(`${registrationQuery}${name}, ${surname}, ${login}, ${hashedPass}, ${email}, ${salt}, ${token});`, (err, data) => {
+    connection.query(`${registrationQuery}'${name}', '${surname}', '${login}', '${hashedPass}', '${email}', '${salt}');`, (err, data) => {
         if(!err){
-            res.status(200).send(token);
+            res.status(200).send();
         } else {
             res.status(400).send();
         }
@@ -93,30 +91,60 @@ app.post('/reg', (req, res) => {
 })
 
 
-app.post('/', (req, res) => {
-    const name = '"' + req.body.login + '"';
-    console.log(name);
-    connection.query(loginQuery + name + ';', (err, data) => {
-        if (!err) {
-            res.send(data);
+app.post('/login', (req, res) => {
+    const { login, pass } = req.body;
+
+    connection.query(`${loginQuery}'${login}';`, (err, data) => {
+        if (!err && data.length) {
+            const user = data[0];
+            const hashedPass = bcrypt.hashSync(pass, user.salt);
+
+            if (hashedPass === user.hashedpass) {
+                const token = randtoken.generate(15);
+
+                connection.query(`UPDATE users SET token = '${token}' WHERE id = '${user.id}';`, (err, data) => {
+                    if (!err) {
+                        res.send(JSON.stringify({ token: token }));
+                    } else {
+                        res.status(500).send({ err: 'DB error' });
+                    }
+                });
+            } else {
+                res.status(401).send({ err: 'Unauthorized' });
+            }            
         } else {
-            console.log(err);
-            res.send(null);
+            res.status(401).send({ err: 'Unauthorized' });
         }
     })
+
+
+    // const name = '"' + req.body.login + '"';
+    // console.log(name);
+    
 
 })
 
-app.get('/main/:id', (req, res) => {
-    const id = +req.params.id;
-    console.log(id);
-    connection.query(allIdeasListQuery + id + ';', (err, data) => {
-        if(!err) {
-            res.send(data);
+app.get('/ideas', (req, res) => {
+    const token = req.get('token');
+
+    connection.query(`SELECT * FROM users WHERE token = '${token}'`, (err, data) => {
+        if (!err && data.length) {
+            const user = data[0];
+            const id = user.id;
+
+            connection.query(allIdeasListQuery + id + ';', (err, data) => {
+                if(!err) {
+                    res.send(data);
+                } else {
+                    res.send(err);
+                }
+            })
         } else {
-            res.send(err);
+            res.status(401).send(JSON.stringify({ err: 'Unauthorized request' }));
         }
-    })
+    });
+
+    
 })
 
 app.get('/idea/:id', (req, res) => {

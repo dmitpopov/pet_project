@@ -11,8 +11,7 @@ class MainPage extends Component {
     }
 
     componentDidMount() {
-        const id = localStorage.getItem('user_id');
-        fetch('http://localhost:3030/main/' + id)
+        fetch('http://localhost:3030/ideas', { headers: { token: localStorage.getItem('token') } })
             .then(response => response.json())
             .then(data => {
                 const newIdeas = [];

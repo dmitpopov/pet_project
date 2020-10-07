@@ -16,12 +16,12 @@ class AuthorisationPage extends Component {
     }
 
     fetchLogin = () => {
-        fetch('http://localhost:3030', {
+        fetch('http://localhost:3030/login', {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({login: this.state.login})
+            body: JSON.stringify({ login: this.state.login, pass: this.state.pass})
         })
             .then(res => res.json())
             .then(data => {
@@ -29,14 +29,9 @@ class AuthorisationPage extends Component {
                 if(data.length === 0) {
                     alert('Введите повторно логин и пароль');
                 } else {
-                    console.log(data);
-                    const {id, name, password} = data[0];
-                    console.log(name, password, this.state.login);
-                    if (name === this.state.login && password === this.state.pass) {
-                        this.setState({log_true: true, pass_true: true});
-                        localStorage.setItem('user_id', id);
-                        this.props.history.push('/main');
-                    }
+                    const { token } = data;
+                    localStorage.setItem('token', token);
+                    this.props.history.push('/');
                 }
             }).catch(err => {
                 console.log(err);
