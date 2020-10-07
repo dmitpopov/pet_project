@@ -6,6 +6,7 @@ import MainPage from "./pages/MainPage";
 import IdeaPage from "./pages/IdeaPage";
 import CreateIdeaPage from "./pages/CreateIdeaPage";
 import RegistrationPage from "./pages/RegistrationPage";
+import LogoutPage from './pages/LogoutPage';
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
     return (
         <div className="app">
           <Route path="/login" exact component={AuthorisationPage} />
+          <Route path="/logout" exact component={LogoutPage} />
           <Route path="/" exact component={MainPage} />
           <Route path="/idea/:id" component={IdeaPage} />
           <Route path="/create" component={CreateIdeaPage} />

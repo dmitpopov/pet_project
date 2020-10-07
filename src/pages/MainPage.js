@@ -12,13 +12,15 @@ class MainPage extends Component {
 
     componentDidMount() {
         fetch('http://localhost:3030/ideas', { headers: { token: localStorage.getItem('token') } })
-            .then(response => response.json())
+            .then(response => {
+                if (response.status === 401) {
+                    this.props.history.push('/login');
+                } else {
+                    return response.json();
+                }
+            })
             .then(data => {
-                const newIdeas = [];
-                data.map(item => {
-                    return newIdeas.push(item);
-                })
-                this.setState({ideas: newIdeas});
+                this.setState({ ideas: data });
             })
             .catch(err => {
                 console.log(err);

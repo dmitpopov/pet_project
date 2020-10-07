@@ -75,16 +75,13 @@ const createEmail = (data) => {
 // });
 
 app.post('/reg', (req, res) => {
-    console.log(req.body);
     const {name, surname, login, pass, email} = req.body;
 
     const salt = bcrypt.genSaltSync(5);
     const hashedPass = bcrypt.hashSync(pass, salt);
 
     connection.query(`${registrationQuery}'${name}', '${surname}', '${login}', '${hashedPass}', '${email}', '${salt}');`, (err, data) => {
-        console.log(err, data);
         if(!err){
-            console.log(data);
             res.status(200).send();
         } else {
             res.status(400).send();
@@ -118,12 +115,6 @@ app.post('/login', (req, res) => {
             res.status(401).send({ err: 'Unauthorized' });
         }
     })
-
-
-    // const name = '"' + req.body.login + '"';
-    // console.log(name);
-    
-
 })
 
 app.get('/ideas', (req, res) => {
@@ -140,51 +131,91 @@ app.get('/ideas', (req, res) => {
                 } else {
                     res.send(err);
                 }
+            });
+        } else {
+            res.status(401).send(JSON.stringify({ err: 'Unauthorized request' }));
+        }
+    });
+})
+
+app.get('/idea/:id', (req, res) => {
+    const token = req.get('token');
+
+    connection.query(`SELECT * FROM users WHERE token = '${token}'`, (err, data) => {
+        if (!err && data.length) {
+            const id = +req.params.id;
+            connection.query(ideaQuery + id + ';', (err, data) => {
+                if(!err) {
+                    res.json(data);
+                } else {
+                    res.json(err);
+                }
+            });
+        } else {
+            res.status(401).send(JSON.stringify({ err: 'Unauthorized request' }));
+        }
+    });
+})
+
+app.delete('/idea/:id', (req, res) => {
+    const token = req.get('token');
+    connection.query(`SELECT * FROM users WHERE token = '${token}'`, (err, data) => {
+        if (!err && data.length) {
+            const id = +req.params.id;
+            connection.query(`${deleteIdeaQuery} ${id};`, (err, data) => {
+                if(!err) {
+                    res.status(200).send(JSON.stringify({ result: 'Ok' }));
+                } else {
+                    res.status(500).send(JSON.stringify({ err: 'DB error' }));
+                }
+            });
+        } else {
+            res.status(401).send(JSON.stringify({ err: 'Unauthorized request' }));
+        }
+    });
+})
+
+
+app.post('/idea', (req, res) => {
+    const token = req.get('token');
+
+    connection.query(`SELECT * FROM users WHERE token = '${token}'`, (err, data) => {
+        if (!err && data.length) {
+            const user = data[0];
+            const { idea_head, idea_text, date, favourite } = req.body;
+
+            connection.query(`${createIdeaQuery} "${user.id}" , "${idea_head}", "${idea_text}", CURRENT_DATE(), ${favourite});`, (err, data) => {
+                if(!err) {
+                    res.status(201).send(JSON.stringify({ result: 'Ok' }));
+                } else {
+                    res.status(500).send(JSON.stringify({ err: 'DB error' }));
+                }
+            })
+        } else {
+            res.status(401).send(JSON.stringify({ status: 401, err: 'Unauthorized request' }));
+        }
+    });
+});
+
+app.get('/logout', (req, res) => {
+    const token = req.get('token');
+
+    connection.query(`SELECT * FROM users WHERE token = '${token}'`, (err, data) => {
+        if (!err && data.length) {
+            const user = data[0];
+
+            connection.query(`UPDATE users SET token = NULL WHERE id = ${user.id}`, (err, data) => {
+                if(!err) {
+                    res.status(201).send();
+                } else {
+                    res.send(err);
+                }
             })
         } else {
             res.status(401).send(JSON.stringify({ err: 'Unauthorized request' }));
         }
     });
-
-    
-})
-
-app.get('/idea/:id', (req, res) => {
-    const id = +req.params.id;
-    connection.query(ideaQuery+id+';', (err, data) => {
-        if(!err) {
-            res.json(data);
-        } else {
-            res.json(err);
-        }
-    })
-})
-
-app.delete('/idea/:id', (req, res) => {
-    const id = +req.params.id;
-    console.log(`${deleteIdeaQuery} ${id};`);
-    connection.query(`${deleteIdeaQuery} ${id};`, (err, data) => {
-        if(!err) {
-            res.status(200).send(data);
-        } else {
-            res.send(err);
-        }
-    })
-})
-
-
-app.post('/create', (req, res) => {
-    let newIdea = {...req.body};
-    const {user_id, idea_head, idea_text, date, favourite} = req.body;
-    console.log(date);
-    connection.query(`${createIdeaQuery} "${user_id}" , "${idea_head}", "${idea_text}", CURRENT_DATE(), ${favourite});`, (err, data) => {
-        if(!err) {
-            res.status(201).send(data);
-        } else {
-            res.send(err);
-        }
-    })
-})
+});
 
 app.listen(3030, () => {
     console.log('server runs at port 3030');
