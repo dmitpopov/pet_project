@@ -30,7 +30,7 @@ class AuthorisationPage extends Component {
             headers: {
                 'Content-type': 'application/json'
             },
-            body: JSON.stringify({login: this.state.login})
+            body: JSON.stringify({login: this.state})
         })
             .then(res => res.json())
             .then(data => {

@@ -8,6 +8,8 @@
 body {
   font-family: Roboto, sans-serif;
   background-color: #EAD39C;
+  margin: 0;
+  padding: 0;
 }
 
 .main_header {
@@ -20,6 +22,7 @@ body {
   background-color: #EAD39C;
   padding: 30px 0 30px;
   margin-top: 20px;
+  border-radius: 10px 10px 0 0;
 }
 
 .main_header a {
@@ -35,6 +38,7 @@ body {
 .auth-form {
   margin: 0 auto;
   text-align: center;
+  border-radius: 0 0 10px 10px;
 }
 
 .auth-form-label {
@@ -67,6 +71,56 @@ body {
   background-color: #EAD39C;
   font-size: 1.5rem;
   color: #B51D0A;
+}
+
+.reg-form-wrapper {
+  margin: 0;
+  padding: 0;
+}
+
+.reg_form {
+  margin: 0 auto;
+  text-align: center;
+  background-color: #EAD39C;
+  padding-top: 10px;
+  border-radius: 0 0 10px 10px;
+}
+
+.reg_form label {
+  display: block;
+  margin: 10px 40px;
+}
+
+.reg_form label span {
+  display: inline-block;
+  width: 80px;
+  color: #B51D0A;
+  margin-right: 40px;
+  font-size: 1.5rem;
+}
+
+.reg_form label input {
+  background-color: #EAD39C;
+  padding: 10px;
+  font-size: 1.5rem;
+  border: 1px solid #B51D0A;
+  outline: none;
+  height: 30px;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+}
+
+.reg_form button {
+  border: 1px solid #B51D0A;
+  border-radius: 10px;
+  outline: none;
+  background-color: #EAD39C;
+  font-size: 1.5rem;
+  color: #B51D0A;
+  margin-top: 20px;
+  height: 70px;
+  margin-bottom: 20px;
 }
 
 a {

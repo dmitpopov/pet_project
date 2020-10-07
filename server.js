@@ -16,6 +16,7 @@ const connection = mysql.createConnection({
     database: 'ideas'
 })
 
+
 let loginQuery = `SELECT * FROM users WHERE name = `;
 let ideaQuery = `SELECT * FROM ideas WHERE id = `;
 let allIdeasListQuery = `SELECT * FROM ideas WHERE user_id = `;
@@ -37,7 +38,6 @@ let transporter = nodemailer.createTransport({
 const getMessagesToRemind = () => {
     connection.query(ideasForMessageQuery, (err, data) => {
         if(!err) {
-            // console.log(data);
             createEmail(data);
         } else {
             console.log(err);
@@ -59,7 +59,6 @@ const createEmail = (data) => {
             return ideasForReminder;
         })
     }
-    // console.log(ideasForReminder);
     transporter.sendMail({
         from: 'bootmailer@yandex.ru',
         to: 'dmpprog@gmail.com',
@@ -68,9 +67,9 @@ const createEmail = (data) => {
     })
 }
 
-cron.schedule('*/1 * * * *', () => {
-    getMessagesToRemind();
-});
+// cron.schedule('*/1 * * * *', () => {
+//     getMessagesToRemind();
+// });
 
 
 app.post('/', (req, res) => {
@@ -102,7 +101,6 @@ app.get('/main/:id', (req, res) => {
 app.get('/idea/:id', (req, res) => {
     const id = +req.params.id;
     connection.query(ideaQuery+id+';', (err, data) => {
-        // console.log((ideaQuery + id + ';'));
         if(!err) {
             res.json(data);
         } else {

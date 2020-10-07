@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
 import IdeaPage from "./pages/IdeaPage";
 import CreateIdeaPage from "./pages/CreateIdeaPage";
+import RegistrationPage from "./pages/RegistrationPage";
 
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path="/main" exact component={MainPage} />
           <Route path="/idea/:id" component={IdeaPage} />
           <Route path="/create" component={CreateIdeaPage} />
+          <Route path="/reg" component={RegistrationPage} />
         </div>
     );
   }

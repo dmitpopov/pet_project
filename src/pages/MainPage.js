@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
-// import AddIdeaButton from "../components/AddIdeaButton";
-// import SettingsButton from "../components/SettingsButton";
 import Header from "../components/header";
 
 

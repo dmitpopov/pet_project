@@ -13,6 +13,8 @@ $buttonBGColor: #EAD39C
 body
   font-family: Roboto,sans-serif
   background-color: $mainBGColor
+  margin: 0
+  padding: 0
 
 .main_header
   text-align: center
@@ -25,6 +27,7 @@ body
   background-color: $mainBGColor
   padding: 30px 0 30px
   margin-top: 20px
+  border-radius: 10px 10px 0 0
 
 .main_header a
   display: inline-block
@@ -38,10 +41,12 @@ body
 .auth-form
   margin: 0 auto
   text-align: center
+  border-radius: 0 0 10px 10px
 
 .auth-form-label
   display: block
   margin: 10px
+
 
 
 .auth-form-label span
@@ -67,6 +72,50 @@ body
   background-color: $buttonBGColor
   font-size: 1.5rem
   color: $mainFontColor
+
+.reg-form-wrapper
+  margin: 0
+  padding: 0
+
+.reg_form
+  margin: 0 auto
+  text-align: center
+  background-color: $mainBGColor
+  padding-top: 10px
+  border-radius: 0 0 10px 10px
+
+.reg_form label
+  display: block
+  margin: 10px 40px
+
+.reg_form label span
+  display: inline-block
+  width: 80px
+  color: $mainFontColor
+  margin-right: 40px
+  font-size: 1.5rem
+
+.reg_form label input
+  background-color: $buttonBGColor
+  padding: 10px
+  font-size: 1.5rem
+  border: 1px solid $mainFontColor
+  outline: none
+  height: 30px
+  border-radius: 10px
+  display: block
+  margin: 0 auto
+
+.reg_form button
+  border: 1px solid $mainFontColor
+  border-radius: 10px
+  outline: none
+  background-color: $buttonBGColor
+  font-size: 1.5rem
+  color: $mainFontColor
+  margin-top: 20px
+  height: 70px
+  margin-bottom: 20px
 
 a
   display: inline-block
