@@ -52,11 +52,11 @@ class IdeaPage extends Component {
         const {id, user_id, idea_head, idea_text, date} = this.state.idea[0];
         console.log(this.state.idea);
         return (
-            <div>
-                <Header />
+            <div className="basic-div">
+                <Header className="main_header" />
                 <main className="main main_idea">
                     <div className="idea-box">
-                        <h3>{idea_head}</h3>
+                        <h2>{idea_head}</h2>
                         <p>{date}</p>
                         <p>{idea_text}</p>
                         <label style={{display: "none"}}>Избранное

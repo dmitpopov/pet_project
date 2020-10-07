@@ -12,7 +12,7 @@ class Header extends Component {
             <header className="main_header">
                 <div>
                     <h1>Сундук идей</h1>
-                    <p>Владелец: {this.state.ownerName ? this.state.ownerName : 'not registered'}</p>
+                    {/*<p>Владелец: {this.state.ownerName ? this.state.ownerName : 'not registered'}</p>*/}
                 </div>
                 <div>
                     {/*<Link to="/main">Главная</Link>*/}

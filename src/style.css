@@ -1,15 +1,67 @@
 @font-face {
   font-family: Roboto, sans-serif;
 }
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+}
+
+.basic-div {
+  max-width: 900px;
+  padding: 0 calc(50% - 450px);
+}
+
 .create-form {
-  padding: 30px 0 30px;
+  padding: 30px;
+  background-color: #EAD39C;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.create-idea-form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  width: 50%;
+}
+
+.create-idea-form input {
+  display: block;
+  border-radius: 10px;
+  border: 1px solid #B51D0A;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  padding: 5px 10px;
+}
+
+.create-idea-form textarea {
+  display: block;
+  border-radius: 10px;
+  border: 1px solid #B51D0A;
+  width: 100%;
+  font-size: 16px;
+  outline: none;
+  padding: 5px 10px;
 }
 
 body {
   font-family: Roboto, sans-serif;
-  background-color: #EAD39C;
+  background-color: #662225;
   margin: 0;
   padding: 0;
+}
+
+.main {
+  background-color: #EAD39C;
+  border-radius: 0 0 10px 10px;
+  padding: 30px;
 }
 
 .main_header {
@@ -20,9 +72,11 @@ body {
   color: #B51D0A;
   border-bottom: 5px dotted #B51D0A;
   background-color: #EAD39C;
-  padding: 30px 0 30px;
+  padding: 30px;
   margin-top: 20px;
   border-radius: 10px 10px 0 0;
+  max-width: 900px;
+  min-width: 760px;
 }
 
 .main_header a {
@@ -48,7 +102,7 @@ body {
 
 .auth-form p {
   color: #B51D0A;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 
 .auth-form a {
@@ -60,13 +114,13 @@ body {
   width: 60px;
   color: #B51D0A;
   margin-right: 40px;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 
 .auth-form-label input {
   background-color: #EAD39C;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 18px;
   border: 1px solid #B51D0A;
   outline: none;
   height: 30px;
@@ -78,7 +132,7 @@ body {
   border-radius: 10px;
   outline: none;
   background-color: #EAD39C;
-  font-size: 1.5rem;
+  font-size: 18px;
   color: #B51D0A;
 }
 
@@ -105,13 +159,13 @@ body {
   width: 80px;
   color: #B51D0A;
   margin-right: 40px;
-  font-size: 1.5rem;
+  font-size: 18px;
 }
 
 .reg_form label input {
   background-color: #EAD39C;
   padding: 10px;
-  font-size: 1.5rem;
+  font-size: 18px;
   border: 1px solid #B51D0A;
   outline: none;
   height: 30px;
@@ -125,7 +179,7 @@ body {
   border-radius: 10px;
   outline: none;
   background-color: #EAD39C;
-  font-size: 1.5rem;
+  font-size: 18px;
   color: #B51D0A;
   margin-top: 20px;
   height: 70px;
@@ -136,7 +190,7 @@ a {
   display: inline-block;
   padding: 10px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 18px;
   text-decoration: none;
   color: #B51D0A;
   border: 1px solid #B51D0A;
@@ -146,7 +200,7 @@ a {
 
 .settings-button {
   width: 150px;
-  font-size: 1.5rem;
+  font-size: 18px;
   color: #B51D0A;
   background-color: #EAD39C;
   border: 1px solid #B51D0A;
@@ -155,16 +209,12 @@ a {
 
 .add-idea-button {
   width: 150px;
-  font-size: 1.5rem;
+  font-size: 18px;
   color: #B51D0A;
   background-color: #ffffff;
   border: 1px solid #B51D0A;
   border-radius: 10px;
   margin-left: 130px;
-}
-
-.create-form {
-  padding: 30px 0 30px;
 }
 
 .create-idea-form label {
@@ -181,7 +231,7 @@ a {
 .create-idea-form button {
   padding: 10px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 18px;
   text-decoration: none;
   color: #B51D0A;
   border: 1px solid #B51D0A;
@@ -193,7 +243,7 @@ a {
 .delete-idea-button {
   padding: 10px;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 18px;
   text-decoration: none;
   color: #B51D0A;
   border: 1px solid #B51D0A;
@@ -205,6 +255,11 @@ a {
 .idea-box {
   margin: 30px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  font-size: 16px;
 }
 
 .prove-delete-idea {
@@ -215,24 +270,6 @@ a {
   background-color: #B51D0A;
   border-radius: 10px;
   padding: 10px;
-}
-
-@media screen and (min-width: 761px) {
-  body {
-    background-color: #500805;
-    padding: 0 calc(50% - 450px);
-    margin: 0;
-  }
-
-  main {
-    background-color: #EAD39C;
-    padding: 30px 0 30px;
-    width: 900px;
-  }
-
-  .main_header {
-    width: 900px;
-  }
 }
 
 /*# sourceMappingURL=style.css.map */

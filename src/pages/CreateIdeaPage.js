@@ -56,7 +56,7 @@ class CreateIdeaPage extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <Header className="main_header create-form_header"/>
                 <main className="create-form">
                     <form className="create-idea-form" onSubmit={this.saveIdeaHandler}>
@@ -70,10 +70,10 @@ class CreateIdeaPage extends Component {
                         <label style={{display: "none"}}><span>Избранное</span>
                             <input type="checkbox" onChange={this.inputFavoriteHandler}/>
                         </label>
-                        <button type="submit" style={this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Сохранить</button>
+                        <button type="submit" className="button" style={this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Сохранить</button>
+                        <Link to="/" className="button" >Назад</Link>
                         <p style={!this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Запись успешно сохранена</p>
                     </form>
-                    <Link to="/main" >Назад</Link>
                 </main>
             </div>
         );

@@ -4,17 +4,62 @@
 $mainFontColor: #B51D0A
 $mainBGColor: #EAD39C
 $buttonBGColor: #EAD39C
+$darkBGColor: #662225
+
+#root
+  display: flex
+  justify-content: center
+
+.app
+  display: flex
+  justify-content: center
+.basic-div
+  max-width: 900px
+  padding: 0 calc(50% - 450px)
 
 .create-form
-  padding: 30px 0 30px
+  padding: 30px
+  background-color: $mainBGColor
+  border-radius: 0 0 10px 10px
+  display: flex
+  justify-content: center
+
+.create-idea-form
+  display: flex
+  flex-direction: column
+  padding: 30px
+  width: 50%
+
+.create-idea-form input
+  display: block
+  border-radius: 10px
+  border: 1px solid $mainFontColor
+  width: 100%
+  font-size: 16px
+  outline: none
+  padding: 5px 10px
+
+.create-idea-form textarea
+  display: block
+  border-radius: 10px
+  border: 1px solid $mainFontColor
+  width: 100%
+  font-size: 16px
+  outline: none
+  padding: 5px 10px
 
 //#7D5E3C
 
 body
   font-family: Roboto,sans-serif
-  background-color: $mainBGColor
+  background-color: $darkBGColor
   margin: 0
   padding: 0
+
+.main
+  background-color: $mainBGColor
+  border-radius: 0 0 10px 10px
+  padding: 30px
 
 .main_header
   text-align: center
@@ -25,9 +70,11 @@ body
   color: $mainFontColor
   border-bottom: 5px dotted $mainFontColor
   background-color: $mainBGColor
-  padding: 30px 0 30px
+  padding: 30px
   margin-top: 20px
   border-radius: 10px 10px 0 0
+  max-width: 900px
+  min-width: 760px
 
 .main_header a
   display: inline-block
@@ -49,7 +96,7 @@ body
 
 .auth-form p
   color: $mainFontColor
-  font-size: 1.5rem
+  font-size: 18px
 
 .auth-form a
   background-color: $mainBGColor
@@ -59,12 +106,12 @@ body
   width: 60px
   color: $mainFontColor
   margin-right: 40px
-  font-size: 1.5rem
+  font-size: 18px
 
 .auth-form-label input
   background-color: $buttonBGColor
   padding: 10px
-  font-size: 1.5rem
+  font-size: 18px
   border: 1px solid $mainFontColor
   outline: none
   height: 30px
@@ -75,7 +122,7 @@ body
   border-radius: 10px
   outline: none
   background-color: $buttonBGColor
-  font-size: 1.5rem
+  font-size: 18px
   color: $mainFontColor
 
 .reg-form-wrapper
@@ -98,12 +145,12 @@ body
   width: 80px
   color: $mainFontColor
   margin-right: 40px
-  font-size: 1.5rem
+  font-size: 18px
 
 .reg_form label input
   background-color: $buttonBGColor
   padding: 10px
-  font-size: 1.5rem
+  font-size: 18px
   border: 1px solid $mainFontColor
   outline: none
   height: 30px
@@ -116,7 +163,7 @@ body
   border-radius: 10px
   outline: none
   background-color: $buttonBGColor
-  font-size: 1.5rem
+  font-size: 18px
   color: $mainFontColor
   margin-top: 20px
   height: 70px
@@ -127,7 +174,7 @@ a
   //width: 150px
   padding: 10px
   text-align: center
-  font-size: 1.5rem
+  font-size: 18px
   text-decoration: none
   color: $mainFontColor
   border: 1px solid $mainFontColor
@@ -136,7 +183,7 @@ a
 
 .settings-button
   width: 150px
-  font-size: 1.5rem
+  font-size: 18px
   color: $mainFontColor
   background-color: $buttonBGColor
   border: 1px solid $mainFontColor
@@ -145,15 +192,12 @@ a
 
 .add-idea-button
   width: 150px
-  font-size: 1.5rem
+  font-size: 18px
   color: $mainFontColor
   background-color: #ffffff
   border: 1px solid $mainFontColor
   border-radius: 10px
   margin-left: 130px
-
-.create-form
-  padding: 30px 0 30px
 
 .create-idea-form label
   display: block
@@ -167,7 +211,7 @@ a
 .create-idea-form button
   padding: 10px
   text-align: center
-  font-size: 1.5rem
+  font-size: 18px
   text-decoration: none
   color: $mainFontColor
   border: 1px solid $mainFontColor
@@ -178,7 +222,7 @@ a
 .delete-idea-button
   padding: 10px
   text-align: center
-  font-size: 1.5rem
+  font-size: 18px
   text-decoration: none
   color: $mainFontColor
   border: 1px solid $mainFontColor
@@ -191,6 +235,11 @@ a
 .idea-box
   margin: 30px
   position: relative
+  display: flex
+  justify-content: center
+  flex-direction: column
+  text-align: center
+  font-size: 16px
 
 .prove-delete-idea
   width: 80%
@@ -201,24 +250,19 @@ a
   border-radius: 10px
   padding: 10px
 
-@media screen and (min-width: 761px)
-
-  body
-    background-color: #500805
-    padding: 0 calc(50% - 450px)
-    margin: 0
-
-
-
-  main
-    background-color: $mainBGColor
-    padding: 30px 0 30px
-    width: 900px
-
-  .main_header
-    width: 900px
-
-//@media screen and (min-width: 900px)
+//@media screen and (min-width: 761px)
 //
 //  body
-//    background-color: white
+//    background-color: #500805
+//    padding: 0 calc(50% - 450px)
+//    margin: 0
+//
+//
+//
+//  main
+//    background-color: $mainBGColor
+//    padding: 30px
+//    //width: 900px
+//
+//  .main_header
+//    width: 900px
