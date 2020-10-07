@@ -33,8 +33,8 @@ class RegistrationPage extends Component {
                 console.log(data);
                 const { token } = data;
                 localStorage.setItem('token', token);
-                console.log(token, 'from DB');
-                console.log(localStorage.getItem(token));
+                // console.log(token, 'from DB');
+                // console.log(localStorage.getItem(token));
                 this.props.history.push('/login');
             })
             .catch(err => {

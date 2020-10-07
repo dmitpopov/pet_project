@@ -32,7 +32,7 @@ class IdeaPage extends Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
-        fetch('http://localhost:3030/idea/' + id)
+        fetch('http://localhost:3030/idea/' + id, { headers: { token: localStorage.getItem('token') } })
             .then(response => response.json())
             .then(data => {
                 // console.log(data);

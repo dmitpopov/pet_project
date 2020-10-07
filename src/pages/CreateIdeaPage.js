@@ -39,7 +39,8 @@ class CreateIdeaPage extends Component {
         fetch('http://localhost:3030/create', {
             method: 'POST',
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                token: localStorage.getItem('token')
             },
             body: JSON.stringify(this.state)
         })

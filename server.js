@@ -14,8 +14,8 @@ const connection = mysql.createConnection({
     host: 'localhost',
     port: 3306,
     user: 'root',
-    // password: '901#Dm?2020&',
-    password: 'abcd1234',
+    password: '901#Dm?2020&',
+    // password: 'abcd1234',
     database: 'ideas'
 })
 
@@ -75,14 +75,16 @@ const createEmail = (data) => {
 // });
 
 app.post('/reg', (req, res) => {
-
+    console.log(req.body);
     const {name, surname, login, pass, email} = req.body;
 
     const salt = bcrypt.genSaltSync(5);
     const hashedPass = bcrypt.hashSync(pass, salt);
 
     connection.query(`${registrationQuery}'${name}', '${surname}', '${login}', '${hashedPass}', '${email}', '${salt}');`, (err, data) => {
+        console.log(err, data);
         if(!err){
+            console.log(data);
             res.status(200).send();
         } else {
             res.status(400).send();
