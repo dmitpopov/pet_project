@@ -9,14 +9,15 @@ class Header extends Component {
 
     render() {
         return (
+
             <header className="main_header">
                 <div>
-                    <h1>Сундук идей</h1>
+                    <h1><span className="header-span">I</span>dea <span className="header-span">m</span>ailer</h1>
                     {/*<p>Владелец: {this.state.ownerName ? this.state.ownerName : 'not registered'}</p>*/}
                 </div>
                 <div>
                     {/*<Link to="/main">Главная</Link>*/}
-                    <Link to="/create">Записать идею</Link>
+                    <Link className="link-button create-button" to="/create">Записать идею</Link>
                     {/*<Link to="/idea">Страница идеи</Link>*/}
                 </div>
 

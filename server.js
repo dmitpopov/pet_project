@@ -29,12 +29,12 @@ let ideasForMessageQuery = `SELECT * FROM ideas WHERE TO_DAYS(NOW()) - TO_DAYS(d
 let registrationQuery = `INSERT INTO users (name, surname, login, hashedpass, email, salt) VALUES (`;
 
 let transporter = nodemailer.createTransport({
-    host: "smtp.yandex.ru",
+    host: "smtp.mailtrap.io",
     port: 465,
     secure: true,
     auth: {
-        user: 'bootmailer',
-        pass: '20bootM20'
+        user: '18a01110183d2d',
+        pass: 'c74e5eb864cbf7'
     }
 })
 
@@ -63,8 +63,8 @@ const createEmail = (data) => {
         })
     }
     transporter.sendMail({
-        from: 'bootmailer@yandex.ru',
-        to: 'dmpprog@gmail.com',
+        from: '98b4ed6e6d-4c1a6f@inbox.mailtrap.io',
+        to: 'dpopov1979@yandex.ru',
         subject: 'Ideas reminder',
         html: ideasForReminder
     })

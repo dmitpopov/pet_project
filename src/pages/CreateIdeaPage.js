@@ -79,14 +79,17 @@ class CreateIdeaPage extends Component {
                             <input type="text" required disabled={this.state.isDisabled} onChange={this.inputHeadHandler}/>
                         </label>
                         <label htmlFor=""><span>Описание</span>
-                            <textarea required disabled={this.state.isDisabled} onChange={this.inputDescriptionHandler}>
+                            <textarea required rows="10" disabled={this.state.isDisabled} onChange={this.inputDescriptionHandler}>
                             </textarea>
                         </label>
                         <label style={{display: "none"}}><span>Избранное</span>
                             <input type="checkbox" onChange={this.inputFavoriteHandler}/>
                         </label>
-                        <button type="submit" className="button" style={this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Сохранить</button>
-                        <Link to="/" className="button" >Назад</Link>
+                        <div className="save-block">
+                            <Link to="/" className="link-button" >Назад</Link>
+                            <button type="submit" className="button" style={this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Сохранить</button>
+
+                        </div>
                         <p style={!this.state.isDisabled ? {visibility: "hidden"} : {visibility: true}}>Запись успешно сохранена</p>
                     </form>
                 </main>

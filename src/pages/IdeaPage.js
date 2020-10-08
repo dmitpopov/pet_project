@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import Header from "../components/header";
 import {Link} from "react-router-dom";
-
+import dayjs from "dayjs";
 
 class IdeaPage extends Component {
     state = {
@@ -63,7 +63,7 @@ class IdeaPage extends Component {
         if(!this.state.idea){
             return null;
         }
-        const {id, user_id, idea_head, idea_text, date} = this.state.idea[0];
+        const {id, idea_head, idea_text, date} = this.state.idea[0];
         console.log(this.state.idea);
         return (
             <div className="basic-div">
@@ -71,7 +71,7 @@ class IdeaPage extends Component {
                 <main className="main main_idea">
                     <div className="idea-box">
                         <h2>{idea_head}</h2>
-                        <p>{date}</p>
+                        <p>{dayjs(date).format('DD.MM.YYYY')}</p>
                         <p>{idea_text}</p>
                         <label style={{display: "none"}}>Избранное
                             <input
@@ -79,31 +79,36 @@ class IdeaPage extends Component {
                                 // defaultChecked={favorite}
                             />
                         </label>
-                        <button
-                            type="button"
-                            className="delete-idea-button"
-                            onClick={this.proveDelete}
-                        >
-                            Удалить
-                        </button>
-                        <Link
-                            to="/main"
-                            className="delete-idea-button"
-                        >
-                            Назад
-                        </Link>
-                        <div className="prove-delete-idea"
-                             style={!this.state.toDelete ? {display: "none"} : {display: "block"}}
-                        >
-                            <p>Вы уверены, что хотите удалить эту идею?</p>
+                        <div className="delete-block">
+                            <Link
+                                to="/"
+                                className="link-button"
+                                style={this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
+                            >
+                                Назад
+                            </Link>
                             <button
-                                className="delete-idea-button"
+                                type="button"
+                                // className="delete-idea-button"
+                                style={this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
+                                onClick={this.proveDelete}
+                            >
+                                Удалить
+                            </button>
+
+                        </div>
+                        <div className="prove-delete-idea"
+                             style={!this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
+                        >
+                            <p>Вы уверены, что хотите удалить идею '{idea_head}'?</p>
+                            <button
+                                className="delete-idea-button delete-button"
                                 onClick={() => this.deleteIdea(id)}
                             >
                                 Удалить
                             </button>
                             <button
-                                className="delete-idea-button"
+                                className="delete-idea-button cancel-button"
                                 onClick={this.proveDelete}
                             >
                                 Отмена

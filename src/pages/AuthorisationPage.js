@@ -56,7 +56,7 @@ class AuthorisationPage extends Component {
     render() {
 
         return (
-            <div className="auth-form">
+            <div className="auth-form main">
                 <form action="" onSubmit={this.loginPathHandler}>
                     <label htmlFor="" className="auth-form-label"><span> Логин</span>
                         <input type="text" onChange={this.logTrueHandler}/>

@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import { Link } from "react-router-dom";
 import Header from "../components/header";
+import dayjs from "dayjs";
+
 
 
 
@@ -35,8 +37,8 @@ class MainPage extends Component {
                 <main className="main">
                     {ideas.map((item) => {
                       return    <Link to={'/idea/' + item.id} className="idea-item" key={item.id} >
-                                    <p>{item.idea_head}</p>
-                                    <p>{' ' + item.date}</p>
+                                    <p><b>{item.idea_head}</b></p>
+                                    <p>{dayjs(item.date).format('DD.MM.YYYY')}</p>
                                 </Link>
                         })
                     }
@@ -49,12 +51,3 @@ class MainPage extends Component {
 
 export default MainPage;
 
-// {ideas.map((item, i) => {
-//     return <Link to={"/idea"} key={i}>
-//         {item.name}
-//     </Link>
-// })}
-
-// {name: 'test15', date: '26.09.2020', description: 'This is idea test1', favorite: false},
-// {name: 'test2', date: '27.09.2020', description: 'This is idea test2', favorite: true},
-// {name: 'test3', date: '28.09.2020', description: 'This is idea test3', favorite: false}

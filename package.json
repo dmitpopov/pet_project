@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "bcrypt": "^5.0.0",
     "cors": "^2.8.5",
+    "datejs": "^1.0.0-rc3",
+    "dayjs": "^1.9.1",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
     "node-cron": "^2.0.3",
