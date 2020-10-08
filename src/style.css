@@ -216,182 +216,150 @@ body {
   font-size: 12px;
 }
 
-.create-form {
-  padding: 30px;
+.create-idea-page {
+  padding-bottom: 50px;
   background-color: #f6fff8;
-  border-radius: 0 0 10px 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  border-radius: 0 0 5px 5px;
+}
+
+.create-idea-page__content {
+  padding: 30px 60px;
 }
 
 .create-idea-form {
-  padding: 30px;
-  width: 70%;
+  width: 80%;
 }
 
-.create-idea-form input {
+.create-idea-form__field {
   display: block;
-  border-radius: 10px;
-  border: 1px solid #55828b;
-  width: 100%;
-  font-size: 16px;
-  outline: none;
-  padding: 5px 10px;
+  margin-bottom: 15px;
 }
 
-.create-idea-form textarea {
+.create-idea-form__label {
   display: block;
-  border-radius: 10px;
-  border: 1px solid #55828b;
-  width: 100%;
-  font-size: 16px;
-  outline: none;
-  padding: 5px 10px;
-  height: auto;
-  font-family: "Montserrat";
+  font-size: 12px;
+  color: #364958;
+  margin-bottom: 5px;
+  padding-left: 10px;
 }
 
-.save-block {
+.create-idea-form__input {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  width: 80%;
+  border: 1px solid #55828b;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.create-idea-form__textarea {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  width: 80%;
+  border: 1px solid #55828b;
+  font-size: 14px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.create-idea-form__controls {
+  margin-top: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
 }
 
-.idea-item {
+.create-idea-form__save-button, .create-idea-form__back-button {
   display: block;
-  margin-bottom: 30px;
-  width: 40%;
-}
-
-.idea-item:hover {
-  background-color: #55828b;
-  color: #ffffff;
-}
-
-.reg-form-wrapper {
-  margin: 0;
-  padding: 0;
-}
-
-.reg_form {
-  margin: 0 auto;
-  text-align: center;
-  background-color: #f6fff8;
-  padding-top: 10px;
-  border-radius: 0 0 10px 10px;
-}
-
-.reg_form label {
-  display: block;
-  margin: 10px 40px;
-}
-
-.reg_form label span {
-  display: inline-block;
-  width: 80px;
-  color: #55828b;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.reg_form label input {
-  background-color: white;
-  padding: 10px;
-  font-size: 18px;
-  border: 1px solid #55828b;
-  outline: none;
-  border-radius: 10px;
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-}
-
-.reg_form button {
-  border-radius: 10px;
-  outline: none;
-  font-size: 18px;
-  color: #55828b;
-  margin-top: 20px;
-  margin-left: 0;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-}
-
-.reg_form button:hover {
-  background-color: #55828b;
-  color: #ffffff;
-  opacity: 80%;
-  outline: none;
-}
-
-.settings-button {
-  width: 150px;
-  font-size: 18px;
-  color: #55828b;
-  background-color: #f6fff8;
-  border: 1px solid #55828b;
-  border-radius: 10px;
-}
-
-.add-idea-button {
-  width: 150px;
-  font-size: 18px;
-  color: #55828b;
-  background-color: #ffffff;
-  border: 1px solid #55828b;
-  border-radius: 10px;
-  margin-left: 130px;
-}
-
-.create-idea-form label {
-  display: block;
-  margin-bottom: 20px;
-  color: #55828b;
-}
-
-.create-idea-form span {
-  display: inline-block;
-  width: 150px;
-}
-
-.delete-idea-button {
-  padding: 10px;
-  text-align: center;
-  font-size: 18px;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: #364958;
   text-decoration: none;
-  color: #55828b;
-  border: 1px solid #55828b;
-  background-color: #f6fff8;
-  border-radius: 10px;
-  margin: 10px;
+  padding: 0 20px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 40px;
 }
 
-.idea-box {
-  margin: 30px;
+.create-idea-form__save-button:hover, .create-idea-form__back-button:hover {
+  color: #f6fff8;
+  background-color: #55828b;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.idea-page {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  text-align: center;
-  font-size: 16px;
-  color: #55828b;
+  padding-bottom: 50px;
+  background-color: #f6fff8;
+  border-radius: 0 0 5px 5px;
 }
 
-.prove-delete-idea {
+.idea-page__content {
+  padding: 30px 60px;
+}
+
+.idea-content__title {
+  margin: 0 0 5px;
+  font-size: 26px;
+  color: #364958;
+  padding-left: 10px;
+}
+
+.idea-content__date {
+  margin: 0 0 20px;
+  font-size: 14px;
+  color: #55828b;
+  padding-left: 10px;
+}
+
+.idea-content__description {
+  margin: 0;
+  color: #364958;
+  padding-left: 10px;
+}
+
+.idea-content__controls {
+  border-top: 1px solid #364958;
+  padding-top: 15px;
+  margin-top: 45px;
+}
+
+.idea-content__remove-button, .idea-content__back-button {
+  display: block;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: #364958;
+  text-decoration: none;
+  padding: 0 20px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background: none;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 40px;
+}
+
+.idea-content__remove-button:hover, .idea-content__back-button:hover {
+  color: #f6fff8;
+  background-color: #55828b;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  cursor: pointer;
+}
+
+.idea-remove-confirm {
   width: 300px;
   position: absolute;
   left: 50%;
@@ -400,36 +368,63 @@ body {
           transform: translate(-50%, -50%);
   background-color: #55828b;
   border-radius: 10px;
-  padding: 10px;
+  padding: 30px;
 }
 
-.delete-block {
-  margin-top: 50px;
+.idea-remove-confirm__text {
+  margin: 0 0 30px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+}
+
+.idea-remove-confirm__controls {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-.prove-delete-idea p {
-  color: white;
-}
-
-.create-button {
-  color: #3b6064;
-  font-weight: 600;
-  font-size: 25px;
-}
-
-.delete-button:hover {
-  background-color: #ff0000;
-}
-
-.cancel-button:hover {
+.idea-remove-confirm__ok-button {
+  display: block;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: red;
+  text-decoration: none;
+  padding: 0 20px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
   background-color: #f6fff8;
-  color: #55828b;
-  opacity: 80%;
-  outline: none;
+  border: none;
+  padding: 5px 10px;
+  margin-right: 20px;
+}
+
+.idea-remove-confirm__ok-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.idea-remove-confirm__cancel-button {
+  display: block;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  color: #364958;
+  text-decoration: none;
+  padding: 0 20px;
+  border-radius: 5px;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  background-color: #f6fff8;
+  border: none;
+  padding: 5px 10px;
+}
+
+.idea-remove-confirm__cancel-button:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */

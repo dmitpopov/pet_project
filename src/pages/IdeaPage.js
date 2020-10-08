@@ -66,53 +66,42 @@ class IdeaPage extends Component {
         const {id, idea_head, idea_text, date} = this.state.idea[0];
         console.log(this.state.idea);
         return (
-            <div className="basic-div">
-                <Header className="main_header" />
-                <main className="main main_idea">
-                    <div className="idea-box">
-                        <h2>{idea_head}</h2>
-                        <p>{dayjs(date).format('DD.MM.YYYY')}</p>
-                        <p>{idea_text}</p>
+            <div className="idea-page">
+                <Header />
+                <main className="idea-page__content">
+                    <div className="idea-content">
+                        <h2 className="idea-content__title">{idea_head}</h2>
+                        <p className="idea-content__date">{dayjs(date).format('DD.MM.YYYY')}</p>
+                        <p className="idea-content__description">{idea_text}</p>
                         <label style={{display: "none"}}>Избранное
                             <input
                                 type="checkbox"
                                 // defaultChecked={favorite}
                             />
                         </label>
-                        <div className="delete-block">
-                            <Link
-                                to="/"
-                                className="link-button"
-                                style={this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
-                            >
-                                Назад
-                            </Link>
+                        <div className="idea-content__controls">
                             <button
                                 type="button"
-                                // className="delete-idea-button"
+                                className="idea-content__remove-button"
                                 style={this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
                                 onClick={this.proveDelete}
                             >
                                 Удалить
                             </button>
-
+                            <Link to="/" className="idea-content__back-button" style={this.state.toDelete ? {display: "none"} : {display: "inline-block"}}>
+                                Назад
+                            </Link>
                         </div>
-                        <div className="prove-delete-idea"
-                             style={!this.state.toDelete ? {display: "none"} : {display: "inline-block"}}
-                        >
-                            <p>Вы уверены, что хотите удалить идею '{idea_head}'?</p>
-                            <button
-                                className="delete-idea-button delete-button"
-                                onClick={() => this.deleteIdea(id)}
-                            >
-                                Удалить
-                            </button>
-                            <button
-                                className="delete-idea-button cancel-button"
-                                onClick={this.proveDelete}
-                            >
-                                Отмена
-                            </button>
+                        <div className="idea-remove-confirm" style={!this.state.toDelete ? {display: "none"} : {display: "block"}}>
+                            <p className="idea-remove-confirm__text">Вы уверены, что хотите удалить идею '{idea_head}'?</p>
+                            <div className="idea-remove-confirm__controls">
+                                <button className="idea-remove-confirm__ok-button" onClick={() => this.deleteIdea(id)}>
+                                    Удалить
+                                </button>
+                                <button className="idea-remove-confirm__cancel-button" onClick={this.proveDelete}>
+                                    Отмена
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </main>

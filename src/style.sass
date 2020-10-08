@@ -172,294 +172,127 @@ body
       padding-left: 10px
       font-size: 12px
 
-
-
-// button
-//   padding: 10px
-//   text-align: center
-//   font-size: 18px
-//   text-decoration: none
-//   color: $mainFontColor
-//   border: none
-//   background-color: $mainBGColor
-//   border-radius: 10px
-//   margin-left: 20px
-//   width: fit-content
-//   display: inline-block
-//   font-weight: 500
-//   &:hover
-//     background-color: $buttonHoverColor
-//     cursor: pointer
-//     color: white
-
-// .link-button
-//   padding: 10px
-//   text-align: center
-//   font-size: 18px
-//   text-decoration: none
-//   color: $mainFontColor
-//   border: none
-//   background-color: $mainBGColor
-//   border-radius: 10px
-//   margin-left: 20px
-//   width: fit-content
-//   display: inline-block
-//   font-weight: 500
-//   &:hover
-//     background-color: $buttonHoverColor
-//     cursor: pointer
-//     color: white
-
-
-.create-form
-  padding: 30px
+.create-idea-page
+  padding-bottom: 50px
   background-color: $mainBGColor
-  border-radius: 0 0 10px 10px
-  display: flex
-  justify-content: center
+  border-radius: 0 0 5px 5px
+
+  &__content
+    padding: 30px 60px 
 
 .create-idea-form
-  padding: 30px
-  width: 70%
+  width: 80%
 
-.create-idea-form input
-  display: block
-  border-radius: 10px
-  border: 1px solid $mainFontColor
-  width: 100%
-  font-size: 16px
-  outline: none
-  padding: 5px 10px
+  &__field
+    display: block
+    margin-bottom: 15px
+  
+  &__label
+    display: block
+    font-size: 12px
+    color: $darkBGColor
+    margin-bottom: 5px
+    padding-left: 10px
 
-.create-idea-form textarea
-  display: block
-  border-radius: 10px
-  border: 1px solid $mainFontColor
-  width: 100%
-  font-size: 16px
-  outline: none
-  padding: 5px 10px
-  height: auto
-  font-family: $basicFont
+  &__input
+    display: block
+    font-family: $basicFont, sans-serif
+    width: 80%
+    border: 1px solid $mainFontColor
+    font-size: 14px
+    padding: 5px 10px
+    border-radius: 5px
+  
+  &__textarea
+    display: block
+    font-family: $basicFont, sans-serif
+    width: 80%
+    border: 1px solid $mainFontColor
+    font-size: 14px
+    padding: 5px 10px
+    border-radius: 5px
+    resize: none
 
-.save-block
-  display: flex
-  justify-content: space-between
+  &__controls
+    margin-top: 25px
+    display: flex
+    align-items: baseline
 
-//#7D5E3C
+  &__save-button,
+  &__back-button
+    display: block
+    font-size: 16px
+    font-family: $basicFont, sans-serif
+    color: $darkBGColor
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
+    background: none
+    border: none
+    padding: 5px 10px
+    margin-right: 40px
 
-// .main
-//   background-color: $mainBGColor
-//   border-radius: 0 0 10px 10px
-//   width: 100%
-//   padding: 30px
-//   display: flex
-//   flex-wrap: wrap
-//   justify-content: space-around
-//   box-sizing: border-box
-//   min-height: 300px
-
-// .main_header
-//   text-align: center
-//   display: flex
-//   justify-content: space-between
-//   align-items: center
-//   color: $mainFontColor
-//   border-bottom: 1px solid $darkBGColor
-//   background-color: $mainBGColor
-//   padding: 0 30px
-//   margin-top: 20px
-//   border-radius: 10px 10px 0 0
-//   max-width: 900px
-//   min-width: 760px
-//   font-size: 20px
-
-// .main_header h1
-//   margin: 0
-
-// .header-span
-//   color: $darkBGColor
-//   font-family: $logoFont
-
-// .main_header a
-//   display: inline-block
-//   background-color: $mainBGColor
-//   //width: 200px
-
-.idea-item
-  display: block
-  margin-bottom: 30px
-  width: 40%
-  //height: fit-content
-  &:hover
-    background-color: $buttonHoverColor
-    color: #ffffff
-
-// .auth-form
-//   margin: 20px auto
-//   text-align: center
-//   border-radius: 10px
-
-// .auth-form-label
-//   display: block
-//   margin: 10px
-
-// .auth-form p
-//   color: $mainFontColor
-//   font-size: 18px
-//   margin: 30px 0 0
-
-
-// .auth-form a
-//   background-color: $mainBGColor
-//   margin: 5px 0 0 0
-//   border: none
-//   &:hover
-//     background-color: $buttonHoverColor
-//     color: #ffffff
-
-// .auth-form-label
-//   display: block
-
-// .auth-form-label span
-//   display: block
-//   width: 60px
-//   color: $mainFontColor
-//   margin-right: 40px
-//   font-size: 18px
-
-// .auth-form-label input
-//   background-color: #ffffff
-//   padding: 10px
-//   font-size: 18px
-//   border: 1px solid $mainFontColor
-//   outline: none
-//   border-radius: 10px
-
-// .auth-submit-button
-//   border-radius: 10px
-//   outline: none
-//   background-color: $mainBGColor
-//   font-size: 18px
-//   color: $mainFontColor
-//   width: fit-content
-//   margin-left: 0
-
-.reg-form-wrapper
-  margin: 0
-  padding: 0
-
-.reg_form
-  margin: 0 auto
-  text-align: center
-  background-color: $mainBGColor
-  padding-top: 10px
-  border-radius: 0 0 10px 10px
-
-.reg_form label
-  display: block
-  margin: 10px 40px
-
-
-.reg_form label span
-  display: inline-block
-  width: 80px
-  color: $mainFontColor
-  font-size: 18px
-  margin-top: 20px
-
-.reg_form label input
-  background-color: white
-  padding: 10px
-  font-size: 18px
-  border: 1px solid $mainFontColor
-  outline: none
-  border-radius: 10px
-  display: block
-  margin: 0 auto
-  width: 50%
-
-.reg_form button
-  //border: 1px solid $mainFontColor
-  border-radius: 10px
-  outline: none
-  //background-color: $mainBGColor
-  font-size: 18px
-  color: $mainFontColor
-  margin-top: 20px
-  margin-left: 0
-  padding: 10px 20px
-  margin-bottom: 20px
-  &:hover
-    background-color: $buttonHoverColor
-    color: #ffffff
-    opacity: 80%
-    outline: none
-
-// a
-//   display: inline-block
-//   //width: 150px
-//   padding: 10px
-//   text-align: center
-//   font-size: 18px
-//   text-decoration: none
-//   color: $mainFontColor
-//   border: 1px solid $mainFontColor
-//   border-radius: 10px
-//   //margin-left: 20px
-
-.settings-button
-  width: 150px
-  font-size: 18px
-  color: $mainFontColor
-  background-color: $mainBGColor
-  border: 1px solid $mainFontColor
-  border-radius: 10px
-  //margin-left: 30px
-
-.add-idea-button
-  width: 150px
-  font-size: 18px
-  color: $mainFontColor
-  background-color: #ffffff
-  border: 1px solid $mainFontColor
-  border-radius: 10px
-  margin-left: 130px
-
-.create-idea-form label
-  display: block
-  margin-bottom: 20px
-  color: $mainFontColor
-
-.create-idea-form span
-  display: inline-block
-  width: 150px
-
-//.create-idea-form button
-
-
-.delete-idea-button
-  padding: 10px
-  text-align: center
-  font-size: 18px
-  text-decoration: none
-  color: $mainFontColor
-  border: 1px solid $mainFontColor
-  background-color: $mainBGColor
-  border-radius: 10px
-  margin: 10px
-
-.idea-box
-  margin: 30px
+    &:hover
+      color: $mainBGColor
+      background-color: $mainFontColor
+      transition: all 0.2s linear
+      cursor: pointer
+  
+.idea-page
   position: relative
-  display: flex
-  justify-content: center
-  flex-direction: column
-  text-align: center
-  font-size: 16px
-  color: $mainFontColor
+  padding-bottom: 50px
+  background-color: $mainBGColor
+  border-radius: 0 0 5px 5px
 
-.prove-delete-idea
+  &__content
+    padding: 30px 60px 
+
+.idea-content
+  &__title
+    margin: 0 0 5px
+    font-size: 26px
+    color: $darkBGColor
+    padding-left: 10px
+
+  &__date
+    margin: 0 0 20px
+    font-size: 14px
+    color: $mainFontColor
+    padding-left: 10px
+
+  &__description
+    margin: 0
+    color: $darkBGColor
+    padding-left: 10px
+
+  &__controls
+    border-top: 1px solid $darkBGColor
+    padding-top: 15px
+    margin-top: 45px
+
+  &__remove-button,
+  &__back-button
+    display: block
+    font-size: 16px
+    font-family: $basicFont, sans-serif
+    color: $darkBGColor
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
+    background: none
+    border: none
+    padding: 5px 10px
+    margin-right: 40px
+
+    &:hover
+      color: $mainBGColor
+      background-color: $mainFontColor
+      transition: all 0.2s linear
+      cursor: pointer
+
+.idea-remove-confirm
   width: 300px
   position: absolute
   left: 50%
@@ -467,47 +300,49 @@ body
   transform: translate(-50%, -50%)
   background-color: $mainFontColor
   border-radius: 10px
-  padding: 10px
+  padding: 30px
 
-.delete-block
-  margin-top: 50px
-  display: flex
-  justify-content: space-around
+  &__text
+    margin: 0 0 30px
+    color: #fff
+    font-size: 14px
+    text-align: center
 
-.prove-delete-idea p
-  color: white
+  &__controls
+    display: flex
+    justify-content: center
 
-.create-button
-  color: #3b6064
-  font-weight: 600
-  font-size: 25px
-
-.delete-button
-  &:hover
-    background-color: #ff0000
-
-.cancel-button
-  //font-weight: 500
-  &:hover
+  &__ok-button
+    display: block
+    font-size: 16px
+    font-family: $basicFont, sans-serif
+    color: red
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
     background-color: $mainBGColor
-    color: $mainFontColor
-    opacity: 80%
-    outline: none
+    border: none
+    padding: 5px 10px
+    margin-right: 20px
 
+    &:hover
+      opacity: 0.8
+      cursor: pointer
 
-//@media screen and (min-width: 761px)
-//
-//  body
-//    background-color: #500805
-//    padding: 0 calc(50% - 450px)
-//    margin: 0
-//
-//
-//
-//  main
-//    background-color: $mainBGColor
-//    padding: 30px
-//    //width: 900px
-//
-//  .main_header
-//    width: 900px
+  &__cancel-button
+    display: block
+    font-size: 16px
+    font-family: $basicFont, sans-serif
+    color: $darkBGColor
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
+    background-color: $mainBGColor
+    border: none
+    padding: 5px 10px
+
+    &:hover
+      opacity: 0.8
+      cursor: pointer
