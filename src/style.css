@@ -86,7 +86,7 @@ body {
 .main-page {
   padding-bottom: 50px;
   background-color: #f6fff8;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 }
 
 .main-page__content {
@@ -219,7 +219,7 @@ body {
 .create-idea-page {
   padding-bottom: 50px;
   background-color: #f6fff8;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 }
 
 .create-idea-page__content {
@@ -302,7 +302,7 @@ body {
   position: relative;
   padding-bottom: 50px;
   background-color: #f6fff8;
-  border-radius: 0 0 5px 5px;
+  border-radius: 5px;
 }
 
 .idea-page__content {
