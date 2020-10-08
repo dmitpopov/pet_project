@@ -56,20 +56,27 @@ class AuthorisationPage extends Component {
     render() {
 
         return (
-            <div className="auth-form main">
-                <form action="" onSubmit={this.loginPathHandler}>
-                    <label htmlFor="" className="auth-form-label"><span> Логин</span>
-                        <input type="text" onChange={this.logTrueHandler}/>
+            <div className="login-page">
+                <form className="auth-form" onSubmit={this.loginPathHandler}>
+                    <h1 className="app-title auth-form__title">
+                        <span className="app-title__title-accent">I</span>dea <span className="app-title__title-accent">m</span>ailer
+                    </h1>
+                    <label className="auth-form__field">
+                        <span className="auth-form__label">Логин</span>
+                        <input type="text" className="auth-form__input" onChange={this.logTrueHandler} />
                     </label>
-                    <label htmlFor="" className="auth-form-label"> <span>Пароль</span>
-                        <input type="password" onChange={this.logPassHandler}/>
+                    <label htmlFor="" className="auth-form__field">
+                        <span className="auth-form__label">Пароль</span>
+                        <input className="auth-form__input" type="password" onChange={this.logPassHandler}/>
                     </label>
-                    <button type="submit" className="auth-submit-button" >Войти</button>
-                    <div>
-                        <p>Нет учетной записи?</p>
-                        <Link to={'/reg'}>
-                            Регистрация
-                        </Link>
+                    <button type="submit" className="auth-form__auth-button">Войти</button>
+                    <div className="login-reg-block">
+                        <p className="login-reg-block__note">
+                            Нет учетной записи?&nbsp;
+                            <Link className="login-reg-block__link" to={'/reg'}>
+                                Зарегистрируйтесь
+                            </Link>
+                        </p>
                     </div>
                 </form>
             </div>

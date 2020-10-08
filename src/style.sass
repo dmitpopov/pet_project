@@ -16,53 +16,199 @@ $logoFont: 'Baloo Chettan 2'
 $basicFont: 'Montserrat'
 $deleteBlock: #87bba2
 
+body
+  font-family: $basicFont
+  background-color: $darkBGColor
+  margin: 0
+  padding: 0
 
 #root
   display: flex
   justify-content: center
 
 .app
-  display: flex
-  justify-content: center
-.basic-div
+  width: 100%
   max-width: 900px
-  padding: 0 calc(50% - 450px)
+  padding: 40px 20px
+  box-sizing: border-box
 
-button
-  padding: 10px
-  text-align: center
-  font-size: 18px
-  text-decoration: none
-  color: $mainFontColor
-  border: none
+.header
+  width: 100%
+  box-sizing: border-box
+  padding: 20px 60px
+  display: flex
+  justify-content: space-between
+  align-items: center
   background-color: $mainBGColor
-  border-radius: 10px
-  margin-left: 20px
-  width: fit-content
-  display: inline-block
-  font-weight: 500
-  &:hover
-    background-color: $buttonHoverColor
-    cursor: pointer
-    color: white
+  border-radius: 5px 5px 0 0
+  border-bottom: 1px solid $darkBGColor
+  
+  &__create-button
+    display: block
+    font-size: 20px
+    color: $darkBGColor
+    line-height: 38px
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
 
-.link-button
-  padding: 10px
-  text-align: center
-  font-size: 18px
-  text-decoration: none
+    &:hover
+      color: $mainBGColor
+      background-color: $mainFontColor
+      transition: all 0.2s linear
+      cursor: pointer
+
+.app-title
+  font-size: 40px
+  line-height: 58px
   color: $mainFontColor
-  border: none
+  margin: 0
+  font-family: $logoFont
+
+  &__title-accent
+    color: $darkBGColor
+
+.main-page
+  padding-bottom: 50px
   background-color: $mainBGColor
-  border-radius: 10px
-  margin-left: 20px
-  width: fit-content
-  display: inline-block
-  font-weight: 500
+  border-radius: 0 0 5px 5px
+
+  &__content
+    padding: 50px 
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+    box-sizing: border-box
+    min-height: 300px
+
+.main-page-idea
+  position: relative
+  top: 0
+  background-color: #fff
+  border: 1px solid $mainFontColor
+  border-radius: 5px
+  text-decoration: none
+  padding: 40px
+  margin-bottom: 40px
+  box-sizing: border-box
+  width: calc(50% - 20px)
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  transition: all 0.1s linear
+
   &:hover
-    background-color: $buttonHoverColor
-    cursor: pointer
-    color: white
+    top: -2px
+    transition: all 0.1s linear
+
+
+  &__title
+    color: #000
+    margin: 0 0 30px
+    font-size: 20px
+    font-weight: 500
+
+  &__date
+    margin: 0
+    font-size: 14px
+    color: #ababab
+
+.auth-form
+  width: 100%
+  max-width: 300px
+  background-color: $mainBGColor
+  border-radius: 5px
+  margin: 0 auto
+  padding: 40px 40px 60px
+
+  &__title
+    margin-bottom: 40px
+    text-align: center
+
+  &__field
+    display: block
+    margin-bottom: 15px
+  
+  &__label
+    display: block
+    font-size: 12px
+    color: $darkBGColor
+    margin-bottom: 5px
+    padding-left: 10px
+
+  &__input
+    display: block
+    font-family: $basicFont, sans-serif
+    width: 80%
+    border: 1px solid $mainFontColor
+    font-size: 14px
+    padding: 5px 10px
+    border-radius: 5px
+
+  &__auth-button
+    display: block
+    font-size: 16px
+    font-family: $basicFont, sans-serif
+    color: $darkBGColor
+    text-decoration: none
+    padding: 0 20px;
+    border-radius: 5px
+    transition: all 0.2s linear
+    background: none
+    border: none
+    padding: 5px 10px
+    margin: 25px 0 40px 0
+
+    &:hover
+      color: $mainBGColor
+      background-color: $mainFontColor
+      transition: all 0.2s linear
+      cursor: pointer
+  
+  .login-reg-block
+    &__note
+      margin: 0
+      padding-left: 10px
+      font-size: 12px
+
+
+
+// button
+//   padding: 10px
+//   text-align: center
+//   font-size: 18px
+//   text-decoration: none
+//   color: $mainFontColor
+//   border: none
+//   background-color: $mainBGColor
+//   border-radius: 10px
+//   margin-left: 20px
+//   width: fit-content
+//   display: inline-block
+//   font-weight: 500
+//   &:hover
+//     background-color: $buttonHoverColor
+//     cursor: pointer
+//     color: white
+
+// .link-button
+//   padding: 10px
+//   text-align: center
+//   font-size: 18px
+//   text-decoration: none
+//   color: $mainFontColor
+//   border: none
+//   background-color: $mainBGColor
+//   border-radius: 10px
+//   margin-left: 20px
+//   width: fit-content
+//   display: inline-block
+//   font-weight: 500
+//   &:hover
+//     background-color: $buttonHoverColor
+//     cursor: pointer
+//     color: white
 
 
 .create-form
@@ -102,49 +248,43 @@ button
 
 //#7D5E3C
 
-body
-  font-family: $basicFont
-  background-color: $darkBGColor
-  margin: 0
-  padding: 0
+// .main
+//   background-color: $mainBGColor
+//   border-radius: 0 0 10px 10px
+//   width: 100%
+//   padding: 30px
+//   display: flex
+//   flex-wrap: wrap
+//   justify-content: space-around
+//   box-sizing: border-box
+//   min-height: 300px
 
-.main
-  background-color: $mainBGColor
-  border-radius: 0 0 10px 10px
-  width: 100%
-  padding: 30px
-  display: flex
-  flex-wrap: wrap
-  justify-content: space-around
-  box-sizing: border-box
-  min-height: 300px
+// .main_header
+//   text-align: center
+//   display: flex
+//   justify-content: space-between
+//   align-items: center
+//   color: $mainFontColor
+//   border-bottom: 1px solid $darkBGColor
+//   background-color: $mainBGColor
+//   padding: 0 30px
+//   margin-top: 20px
+//   border-radius: 10px 10px 0 0
+//   max-width: 900px
+//   min-width: 760px
+//   font-size: 20px
 
-.main_header
-  text-align: center
-  display: flex
-  justify-content: space-between
-  align-items: center
-  color: $mainFontColor
-  border-bottom: 1px solid $darkBGColor
-  background-color: $mainBGColor
-  padding: 0 30px
-  margin-top: 20px
-  border-radius: 10px 10px 0 0
-  max-width: 900px
-  min-width: 760px
-  font-size: 20px
+// .main_header h1
+//   margin: 0
 
-.main_header h1
-  margin: 0
+// .header-span
+//   color: $darkBGColor
+//   font-family: $logoFont
 
-.header-span
-  color: $darkBGColor
-  font-family: $logoFont
-
-.main_header a
-  display: inline-block
-  background-color: $mainBGColor
-  //width: 200px
+// .main_header a
+//   display: inline-block
+//   background-color: $mainBGColor
+//   //width: 200px
 
 .idea-item
   display: block
@@ -155,55 +295,55 @@ body
     background-color: $buttonHoverColor
     color: #ffffff
 
-.auth-form
-  margin: 20px auto
-  text-align: center
-  border-radius: 10px
+// .auth-form
+//   margin: 20px auto
+//   text-align: center
+//   border-radius: 10px
 
-.auth-form-label
-  display: block
-  margin: 10px
+// .auth-form-label
+//   display: block
+//   margin: 10px
 
-.auth-form p
-  color: $mainFontColor
-  font-size: 18px
-  margin: 30px 0 0
+// .auth-form p
+//   color: $mainFontColor
+//   font-size: 18px
+//   margin: 30px 0 0
 
 
-.auth-form a
-  background-color: $mainBGColor
-  margin: 5px 0 0 0
-  border: none
-  &:hover
-    background-color: $buttonHoverColor
-    color: #ffffff
+// .auth-form a
+//   background-color: $mainBGColor
+//   margin: 5px 0 0 0
+//   border: none
+//   &:hover
+//     background-color: $buttonHoverColor
+//     color: #ffffff
 
-.auth-form-label
-  display: block
+// .auth-form-label
+//   display: block
 
-.auth-form-label span
-  display: block
-  width: 60px
-  color: $mainFontColor
-  margin-right: 40px
-  font-size: 18px
+// .auth-form-label span
+//   display: block
+//   width: 60px
+//   color: $mainFontColor
+//   margin-right: 40px
+//   font-size: 18px
 
-.auth-form-label input
-  background-color: #ffffff
-  padding: 10px
-  font-size: 18px
-  border: 1px solid $mainFontColor
-  outline: none
-  border-radius: 10px
+// .auth-form-label input
+//   background-color: #ffffff
+//   padding: 10px
+//   font-size: 18px
+//   border: 1px solid $mainFontColor
+//   outline: none
+//   border-radius: 10px
 
-.auth-submit-button
-  border-radius: 10px
-  outline: none
-  background-color: $mainBGColor
-  font-size: 18px
-  color: $mainFontColor
-  width: fit-content
-  margin-left: 0
+// .auth-submit-button
+//   border-radius: 10px
+//   outline: none
+//   background-color: $mainBGColor
+//   font-size: 18px
+//   color: $mainFontColor
+//   width: fit-content
+//   margin-left: 0
 
 .reg-form-wrapper
   margin: 0
@@ -256,17 +396,17 @@ body
     opacity: 80%
     outline: none
 
-a
-  display: inline-block
-  //width: 150px
-  padding: 10px
-  text-align: center
-  font-size: 18px
-  text-decoration: none
-  color: $mainFontColor
-  border: 1px solid $mainFontColor
-  border-radius: 10px
-  //margin-left: 20px
+// a
+//   display: inline-block
+//   //width: 150px
+//   padding: 10px
+//   text-align: center
+//   font-size: 18px
+//   text-decoration: none
+//   color: $mainFontColor
+//   border: 1px solid $mainFontColor
+//   border-radius: 10px
+//   //margin-left: 20px
 
 .settings-button
   width: 150px

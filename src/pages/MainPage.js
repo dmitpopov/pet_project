@@ -32,16 +32,17 @@ class MainPage extends Component {
     render() {
         const ideas = this.state.ideas;
         return (
-            <div>
+            <div className="main-page">
                 <Header />
-                <main className="main">
+                <main className="main-page__content">
                     {ideas.map((item) => {
-                      return    <Link to={'/idea/' + item.id} className="idea-item" key={item.id} >
-                                    <p><b>{item.idea_head}</b></p>
-                                    <p>{dayjs(item.date).format('DD.MM.YYYY')}</p>
-                                </Link>
-                        })
-                    }
+                        return (
+                            <Link to={'/idea/' + item.id} className="main-page-idea" key={item.id} >
+                                <p className="main-page-idea__title">{item.idea_head}</p>
+                                <p className="main-page-idea__date">{dayjs(item.date).format('DD.MM.YYYY')}</p>
+                            </Link>
+                        );
+                    })}
                 </main>
             </div>
 
