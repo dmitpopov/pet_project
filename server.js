@@ -30,8 +30,7 @@ let registrationQuery = `INSERT INTO users (name, surname, login, hashedpass, em
 
 let transporter = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
-    port: 465,
-    secure: true,
+    port: 2525,
     auth: {
         user: '18a01110183d2d',
         pass: 'c74e5eb864cbf7'
@@ -49,29 +48,34 @@ const getMessagesToRemind = () => {
 }
 
 const createEmail = (data) => {
-    let newData = data;
-    let ideasForReminder = '<h1><i>Список идей за прошедшую неделю</i></h1>';
-    if(newData.length === 0) {
-        ideasForReminder += 'Пока ничего нового';
+    let letter = '<div style="padding:20px;">'
+    letter += '<h1 style="font-family: Helvetica, sans-serif; margin: 0 0 40px;">Список идей за прошедшую неделю</h1>';
+    if(data.length === 0) {
+        letter += '<p style="margin: 0 0 30px;">Пока ничего нового<p>';
     } else {
-        newData.map((item) => {
-            ideasForReminder += `<div>
-                                <h2>${item.idea_head}</h2>
-                                <a href="http://localhost:3000/idea/${item.id}">${item.idea_text}</a>
-                            </div>`
-            return ideasForReminder;
-        })
+        data.forEach((item) => {
+            letter += ` <div style="font-family: Helvetica, sans-serif; width: 60%; min-width: 360px">
+                            <h2 style="margin: 0 0 10px; font-weight: 400;">${item.idea_head}</h2>
+                            <p style="margin: 0 0 30px;">${item.idea_text}</p>
+                        </div>`
+        });
     }
+    letter += '</div>';
+
     transporter.sendMail({
         from: '98b4ed6e6d-4c1a6f@inbox.mailtrap.io',
         to: 'dpopov1979@yandex.ru',
         subject: 'Ideas reminder',
-        html: ideasForReminder
+        html: letter
+    })
+    .then((data) => console.log(data))
+    .catch((err) => {
+        console.log(err);
     })
 }
 
 // cron.schedule('*/1 * * * *', () => {
-//     getMessagesToRemind();
+    getMessagesToRemind();
 // });
 
 app.post('/reg', (req, res) => {
